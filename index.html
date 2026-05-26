@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <meta name="theme-color" content="#2D2A2B">
-    <title>TaskFlow | Compacto</title>
+    <title>TaskFlow Pro | Compacto com textos completos</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
@@ -21,7 +21,6 @@
             --text-title: #FFFFFF;
             --text-muted: #B0B0B0;
             --primary: #F97316;
-            --primary-glow: rgba(249,115,22,0.3);
             --grad: linear-gradient(135deg, #FF7F30, #E85D04);
             --danger: #ef4444;
             --success: #10b981;
@@ -39,9 +38,9 @@
             --text-muted: #64748b;
             --shadow: 0 1px 2px rgba(0,0,0,0.05);
         }
-        body { background: var(--bg-base); color: var(--text); font-size: 12px; }
+        body { background: var(--bg-base); color: var(--text); font-size: 13px; }
         
-        /* Header super compacto */
+        /* Header compacto */
         .app-header {
             background: var(--bg-glass, var(--bg-surface));
             backdrop-filter: blur(8px);
@@ -50,25 +49,25 @@
             display: flex;
             flex-wrap: wrap;
             align-items: center;
-            gap: 0.5rem;
+            gap: 0.6rem;
             position: sticky;
             top: 0;
             z-index: 50;
         }
-        .brand { display: flex; align-items: center; gap: 0.3rem; font-size: 1rem; font-weight: 800; color: var(--text-title); }
-        .logo-box { background: var(--grad); padding: 0.2rem; border-radius: 6px; line-height: 1; font-size: 0.9rem; }
-        .search-container { flex: 2; min-width: 120px; position: relative; }
-        .search-container input { width: 100%; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 20px; padding: 0.2rem 0.5rem 0.2rem 1.6rem; font-size: 0.7rem; color: var(--text-title); }
-        .search-container i { position: absolute; left: 0.4rem; top: 50%; transform: translateY(-50%); font-size: 0.8rem; color: var(--text-muted); }
-        .header-actions { display: flex; gap: 0.3rem; position: relative; }
-        .icon-btn { background: var(--bg-surface); border: 1px solid var(--border); width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 0.9rem; color: var(--text-title); }
+        .brand { display: flex; align-items: center; gap: 0.4rem; font-size: 1rem; font-weight: 800; color: var(--text-title); }
+        .logo-box { background: var(--grad); padding: 0.2rem 0.4rem; border-radius: 6px; line-height: 1; }
+        .search-container { flex: 2; min-width: 140px; position: relative; }
+        .search-container input { width: 100%; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 20px; padding: 0.3rem 0.6rem 0.3rem 1.8rem; font-size: 0.75rem; color: var(--text-title); }
+        .search-container i { position: absolute; left: 0.5rem; top: 50%; transform: translateY(-50%); font-size: 0.85rem; color: var(--text-muted); }
+        .header-actions { display: flex; gap: 0.4rem; position: relative; }
+        .icon-btn { background: var(--bg-surface); border: 1px solid var(--border); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1rem; color: var(--text-title); }
         .pomodoro-active { background: var(--grad); border-color: transparent; color: white; }
-        .dropdown-menu { position: absolute; right: 0; top: 30px; background: var(--bg-glass, var(--bg-surface)); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 10px; min-width: 160px; display: none; flex-direction: column; padding: 0.3rem; z-index: 100; font-size: 0.7rem; }
+        .dropdown-menu { position: absolute; right: 0; top: 32px; background: var(--bg-glass, var(--bg-surface)); backdrop-filter: blur(8px); border: 1px solid var(--border); border-radius: 10px; min-width: 170px; display: none; flex-direction: column; padding: 0.3rem; z-index: 100; font-size: 0.75rem; }
         .dropdown-menu.active { display: flex; }
         .dropdown-item { padding: 0.3rem 0.6rem; cursor: pointer; border-radius: 6px; display: flex; align-items: center; gap: 0.4rem; color: var(--text-title); }
         .dropdown-item:hover { background: var(--bg-hover); }
         
-        /* Barra de estatísticas e filtros (uma linha) */
+        /* Barra de estatísticas e filtros (linha única) */
         .stats-bar {
             background: var(--bg-surface);
             border-bottom: 1px solid var(--border);
@@ -78,151 +77,151 @@
             align-items: center;
             justify-content: space-between;
             gap: 0.4rem;
-            font-size: 0.65rem;
+            font-size: 0.7rem;
             font-weight: 600;
         }
-        .mini-stats { display: flex; gap: 0.5rem; }
-        .mini-stats span { background: var(--bg-base); padding: 0.1rem 0.4rem; border-radius: 30px; border: 1px solid var(--border); display: flex; align-items: center; gap: 0.2rem; }
-        .filters-row { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-        .filter-pill { background: var(--bg-base); border: 1px solid var(--border); border-radius: 30px; padding: 0.1rem 0.5rem; font-size: 0.65rem; cursor: pointer; color: var(--text-title); }
+        .mini-stats { display: flex; gap: 0.6rem; }
+        .mini-stats span { background: var(--bg-base); padding: 0.1rem 0.5rem; border-radius: 30px; border: 1px solid var(--border); display: flex; align-items: center; gap: 0.3rem; }
+        .filters-row { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .filter-pill { background: var(--bg-base); border: 1px solid var(--border); border-radius: 30px; padding: 0.1rem 0.6rem; font-size: 0.7rem; cursor: pointer; color: var(--text-title); }
         .global-progress { height: 2px; background: var(--border); }
         .global-progress-fill { height: 100%; background: var(--grad); width: 0%; }
         .pomodoro-bar { height: 2px; background: var(--success); width: 0%; }
         
-        /* Formulário inline ultracompacto */
+        /* Formulário inline compacto (textos completos) */
         .inline-form {
             background: var(--bg-surface);
             border: 1px solid var(--border);
-            border-radius: 10px;
-            margin: 0.4rem 0.8rem;
-            padding: 0.4rem 0.6rem;
+            border-radius: 12px;
+            margin: 0.5rem 0.8rem;
+            padding: 0.5rem 0.8rem;
             display: flex;
             flex-wrap: wrap;
             align-items: flex-end;
-            gap: 0.4rem;
+            gap: 0.5rem;
         }
-        .field { display: flex; flex-direction: column; gap: 0.1rem; flex: 1 1 90px; }
-        .field label { font-size: 0.55rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
-        .field input, .field select { background: var(--bg-base); border: 1px solid var(--border); border-radius: 20px; padding: 0.2rem 0.5rem; font-size: 0.7rem; color: var(--text-title); }
-        button { background: var(--grad); border: none; border-radius: 20px; padding: 0.2rem 0.7rem; font-weight: 700; font-size: 0.7rem; cursor: pointer; color: white; }
+        .field { display: flex; flex-direction: column; gap: 0.1rem; flex: 1 1 100px; }
+        .field label { font-size: 0.6rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); }
+        .field input, .field select { background: var(--bg-base); border: 1px solid var(--border); border-radius: 20px; padding: 0.3rem 0.6rem; font-size: 0.75rem; color: var(--text-title); }
+        button { background: var(--grad); border: none; border-radius: 20px; padding: 0.3rem 0.9rem; font-weight: 700; font-size: 0.75rem; cursor: pointer; color: white; white-space: nowrap; }
         .btn-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
-        .form-actions { display: flex; gap: 0.3rem; align-items: center; }
+        .form-actions { display: flex; gap: 0.4rem; align-items: center; }
         
         /* Lista de tarefas - grid compacto */
         .main-content {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 0.5rem;
-            padding: 0.5rem 0.8rem;
+            grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+            gap: 0.6rem;
+            padding: 0.6rem 0.8rem;
         }
         .task-card {
             background: var(--bg-surface);
             border: 1px solid var(--border);
             border-radius: 10px;
-            padding: 0.5rem;
+            padding: 0.6rem;
             transition: 0.1s;
             display: flex;
             flex-direction: column;
-            gap: 0.3rem;
+            gap: 0.4rem;
         }
         .task-card:hover { transform: translateY(-1px); box-shadow: 0 2px 6px rgba(0,0,0,0.2); border-color: var(--primary); }
         .task-card.completed { opacity: 0.6; background: var(--bg-base); }
-        .task-header { display: flex; gap: 0.4rem; align-items: flex-start; }
-        .custom-cb { width: 14px; height: 14px; border: 1.5px solid var(--text-muted); border-radius: 3px; appearance: none; cursor: pointer; flex-shrink: 0; margin-top: 0.15rem; background: var(--bg-base); }
+        .task-header { display: flex; gap: 0.5rem; align-items: flex-start; }
+        .custom-cb { width: 16px; height: 16px; border: 1.5px solid var(--text-muted); border-radius: 4px; appearance: none; cursor: pointer; flex-shrink: 0; margin-top: 0.2rem; background: var(--bg-base); }
         .custom-cb:checked { background: var(--primary); border-color: var(--primary); position: relative; }
-        .custom-cb:checked::after { content: '✓'; color: white; font-size: 0.55rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
+        .custom-cb:checked::after { content: '✓'; color: white; font-size: 0.65rem; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); }
         .task-content { flex: 1; min-width: 0; }
-        .task-title-row { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; }
-        .priority-dot { width: 6px; height: 6px; border-radius: 50%; }
+        .task-title-row { display: flex; align-items: center; gap: 0.4rem; cursor: pointer; }
+        .priority-dot { width: 7px; height: 7px; border-radius: 50%; }
         .priority-dot.high { background: var(--danger); }
         .priority-dot.medium { background: var(--warning); }
         .priority-dot.low { background: var(--success); }
-        .task-title { font-weight: 700; font-size: 0.75rem; color: var(--text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .task-desc { font-size: 0.65rem; color: var(--text-muted); margin-top: 0.1rem; cursor: pointer; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-        .task-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.2rem; font-size: 0.6rem; }
-        .badge { background: var(--bg-base); padding: 0.1rem 0.3rem; border-radius: 30px; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 0.2rem; }
-        .task-actions-row { display: flex; gap: 0.1rem; }
-        .action-icon { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.85rem; padding: 0.1rem; border-radius: 50%; }
-        .drag-handle { cursor: grab; padding: 0.1rem; color: var(--text-muted); font-size: 0.9rem; }
-        .task-checklist { margin-top: 0.3rem; background: var(--bg-base); border-radius: 6px; padding: 0.2rem; font-size: 0.6rem; }
-        .checklist-item { display: flex; align-items: center; gap: 0.2rem; cursor: pointer; }
+        .task-title { font-weight: 700; font-size: 0.8rem; color: var(--text-title); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .task-desc { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.15rem; cursor: pointer; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+        .task-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 0.3rem; font-size: 0.65rem; }
+        .badge { background: var(--bg-base); padding: 0.1rem 0.4rem; border-radius: 30px; border: 1px solid var(--border); display: inline-flex; align-items: center; gap: 0.2rem; }
+        .task-actions-row { display: flex; gap: 0.2rem; }
+        .action-icon { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.9rem; padding: 0.2rem; border-radius: 50%; }
+        .drag-handle { cursor: grab; padding: 0.2rem; color: var(--text-muted); font-size: 1rem; }
+        .task-checklist { margin-top: 0.3rem; background: var(--bg-base); border-radius: 6px; padding: 0.2rem 0.3rem; font-size: 0.65rem; }
+        .checklist-item { display: flex; align-items: center; gap: 0.3rem; cursor: pointer; }
         .subtask-container { display: flex; align-items: center; gap: 0.3rem; }
         .progress-track { height: 3px; flex: 1; background: var(--border); border-radius: 3px; overflow: hidden; }
         .progress-fill { height: 100%; background: var(--grad); }
         
         /* Modais compactos */
-        dialog { margin: auto; border: none; border-radius: 12px; background: var(--bg-surface); width: min(90%, 400px); color: var(--text); }
-        .modal-content { padding: 0.8rem; display: flex; flex-direction: column; gap: 0.6rem; }
-        .form-control { background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; padding: 0.3rem 0.6rem; font-size: 0.75rem; color: var(--text-title); }
-        .chart-container { margin: 0.3rem; padding: 0.5rem; background: var(--bg-surface); border-radius: 10px; display: none; }
+        dialog { margin: auto; border: none; border-radius: 12px; background: var(--bg-surface); width: min(90%, 420px); color: var(--text); }
+        .modal-content { padding: 0.8rem; display: flex; flex-direction: column; gap: 0.7rem; }
+        .form-control { background: var(--bg-base); border: 1px solid var(--border); border-radius: 10px; padding: 0.4rem 0.6rem; font-size: 0.75rem; color: var(--text-title); }
+        .chart-container { margin: 0.4rem; padding: 0.5rem; background: var(--bg-surface); border-radius: 10px; display: none; }
         .chart-container.visible { display: block; }
         canvas { width: 100%; height: 80px; }
-        #toast { position: fixed; bottom: 0.8rem; left: 50%; transform: translateX(-50%) translateY(150%); background: var(--bg-glass, var(--bg-surface)); backdrop-filter: blur(8px); padding: 0.2rem 0.8rem; border-radius: 30px; font-size: 0.7rem; z-index: 200; transition: 0.2s; display: flex; gap: 0.5rem; align-items: center; white-space: nowrap; border: 1px solid var(--border); }
+        #toast { position: fixed; bottom: 0.8rem; left: 50%; transform: translateX(-50%) translateY(150%); background: var(--bg-glass, var(--bg-surface)); backdrop-filter: blur(8px); padding: 0.3rem 1rem; border-radius: 30px; font-size: 0.75rem; z-index: 200; transition: 0.2s; display: flex; gap: 0.8rem; align-items: center; white-space: nowrap; border: 1px solid var(--border); }
         #toast.show { transform: translateX(-50%) translateY(0); }
         .onboarding-overlay { position: fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.8); z-index: 200; display: flex; align-items: center; justify-content: center; }
-        .onboarding-card { background: var(--bg-surface); border-radius: 14px; padding: 1rem; max-width: 260px; text-align: center; font-size: 0.8rem; }
-        @media (max-width: 600px) { .inline-form { flex-direction: column; align-items: stretch; } .field { width: 100%; } .main-content { grid-template-columns: 1fr; } }
+        .onboarding-card { background: var(--bg-surface); border-radius: 14px; padding: 1rem; max-width: 280px; text-align: center; font-size: 0.8rem; }
+        @media (max-width: 640px) { .inline-form { flex-direction: column; align-items: stretch; } .field { width: 100%; } .main-content { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
 <header class="app-header">
-    <div class="brand"><div class="logo-box"><i class="ph-bold ph-check-square-offset"></i></div><span>TF</span></div>
-    <div class="search-container"><i class="ph ph-magnifying-glass"></i><input type="text" id="searchInput" placeholder="Buscar..."></div>
+    <div class="brand"><div class="logo-box"><i class="ph-bold ph-check-square-offset"></i></div><span>TaskFlow Pro</span></div>
+    <div class="search-container"><i class="ph ph-magnifying-glass"></i><input type="text" id="searchInput" placeholder="Pesquisar... (Ctrl+K)"></div>
     <div class="header-actions">
-        <button class="icon-btn" id="pomodoroBtn"><i class="ph ph-timer"></i></button>
-        <button class="icon-btn" id="viewToggle"><i class="ph ph-grid-four"></i></button>
-        <button class="icon-btn" id="themeToggleQuick"><i class="ph ph-moon"></i></button>
-        <button class="icon-btn" id="menuToggle"><i class="ph ph-dots-three-vertical"></i></button>
+        <button class="icon-btn" id="pomodoroBtn" title="Pomodoro"><i class="ph ph-timer"></i></button>
+        <button class="icon-btn" id="viewToggle" title="Alternar visualização"><i class="ph ph-grid-four"></i></button>
+        <button class="icon-btn" id="themeToggleQuick" title="Tema claro/escuro"><i class="ph ph-moon"></i></button>
+        <button class="icon-btn" id="menuToggle" title="Menu"><i class="ph ph-dots-three-vertical"></i></button>
         <div class="dropdown-menu" id="mainMenu">
-            <div class="dropdown-item" id="exportBtn"><i class="ph ph-download-simple"></i> Backup</div>
-            <div class="dropdown-item" id="exportPdfBtn"><i class="ph ph-file-pdf"></i> PDF</div>
-            <label class="dropdown-item" for="restoreFileInput"><i class="ph ph-upload-simple"></i> Restaurar</label>
+            <div class="dropdown-item" id="exportBtn"><i class="ph ph-download-simple"></i> Backup JSON</div>
+            <div class="dropdown-item" id="exportPdfBtn"><i class="ph ph-file-pdf"></i> Exportar PDF</div>
+            <label class="dropdown-item" for="restoreFileInput"><i class="ph ph-upload-simple"></i> Restaurar Backup</label>
             <input type="file" id="restoreFileInput" accept=".json" style="display:none">
-            <div class="dropdown-item" id="importListBtn"><i class="ph ph-file-csv"></i> Importar</div>
+            <div class="dropdown-item" id="importListBtn"><i class="ph ph-file-csv"></i> Importar Lista</div>
             <input type="file" id="importListFileInput" accept=".csv,.json" style="display:none">
-            <div class="dropdown-item" id="downloadModelBtn"><i class="ph ph-info"></i> Modelos</div>
-            <div style="height:1px; background:var(--border); margin:2px 0;"></div>
-            <div class="dropdown-item" id="toggleChartBtn"><i class="ph ph-chart-bar"></i> Gráfico</div>
-            <div class="dropdown-item danger" id="clearCompletedBtn"><i class="ph ph-broom"></i> Limpar OK</div>
+            <div class="dropdown-item" id="downloadModelBtn"><i class="ph ph-info"></i> Modelos para IA</div>
+            <div style="height:1px; background:var(--border); margin:4px 0;"></div>
+            <div class="dropdown-item" id="toggleChartBtn"><i class="ph ph-chart-bar"></i> Dashboard</div>
+            <div class="dropdown-item danger" id="clearCompletedBtn"><i class="ph ph-broom"></i> Limpar Concluídas</div>
         </div>
     </div>
 </header>
 <div class="stats-bar">
-    <div class="mini-stats"><span id="kpi-rate"><i class="ph-fill ph-check-circle"></i>0%</span><span id="kpi-pending"><i class="ph-fill ph-hourglass-high"></i>0</span><span id="kpi-high"><i class="ph-fill ph-fire"></i>0</span></div>
+    <div class="mini-stats"><span id="kpi-rate"><i class="ph-fill ph-check-circle"></i> 0%</span><span id="kpi-pending"><i class="ph-fill ph-hourglass-high"></i> 0 pendentes</span><span id="kpi-high"><i class="ph-fill ph-fire"></i> 0 críticas</span></div>
     <div class="filters-row">
-        <button id="clearFiltersBtn" class="filter-pill" style="display:none;">Limpar</button>
-        <select id="filterStatus" class="filter-pill"><option value="all">Todas</option><option value="pending">Pend.</option><option value="completed">Conc.</option></select>
-        <select id="filterCategory" class="filter-pill"><option value="all">Cat.</option><option value="Trabalho">Trab.</option><option value="Projeto">Proj.</option><option value="Pessoal">Pes.</option></select>
-        <select id="filterPriority" class="filter-pill"><option value="all">Prior.</option><option value="high">Alta</option><option value="medium">Méd.</option><option value="low">Baixa</option></select>
-        <select id="sortSelect" class="filter-pill"><option value="manual">Manual</option><option value="date">Prazo</option><option value="priority">Prior.</option></select>
+        <button id="clearFiltersBtn" class="filter-pill" style="display:none;">Limpar filtros</button>
+        <select id="filterStatus" class="filter-pill"><option value="all">Situação: Todas</option><option value="pending">Pendentes</option><option value="completed">Concluídas</option></select>
+        <select id="filterCategory" class="filter-pill"><option value="all">Categoria: Todas</option><option value="Trabalho">Trabalho</option><option value="Projeto">Projeto</option><option value="Pessoal">Pessoal</option></select>
+        <select id="filterPriority" class="filter-pill"><option value="all">Prioridade: Todas</option><option value="high">Alta</option><option value="medium">Média</option><option value="low">Baixa</option></select>
+        <select id="sortSelect" class="filter-pill"><option value="manual">Ordenar: Manual</option><option value="date">Data</option><option value="priority">Prioridade</option></select>
     </div>
 </div>
 <div class="global-progress"><div class="global-progress-fill" id="globalProgressFill"></div></div>
 <div class="pomodoro-bar" id="pomodoroBar"></div>
 
 <form id="inlineTaskForm" class="inline-form">
-    <div class="field" style="flex:2"><label>Título</label><input type="text" id="taskTitle" placeholder="Título" required></div>
-    <div class="field"><label>Desc</label><input type="text" id="taskDesc" placeholder="Descrição"></div>
-    <div class="field"><label>Prior</label><select id="taskPriority"><option value="low">Bx</option><option value="medium" selected>Md</option><option value="high">Al</option></select></div>
-    <div class="field"><label>Cat</label><input type="text" id="taskCategoryInput" list="catOpts" placeholder="Cat"><datalist id="catOpts"><option>Trabalho</option><option>Projeto</option><option>Pessoal</option></datalist></div>
-    <div class="field"><label>Data</label><input type="text" id="taskDueDate" placeholder="hoje"></div>
-    <div class="form-actions"><button type="submit" id="submitBtn">+</button><button type="button" id="cancelEditBtn" class="btn-outline" style="display:none;">✖</button><button type="button" id="clearFormBtn" class="btn-outline">🗑</button></div>
+    <div class="field" style="flex:2"><label>Título *</label><input type="text" id="taskTitle" placeholder="Ex: Reunião" required></div>
+    <div class="field"><label>Descrição</label><input type="text" id="taskDesc" placeholder="Opcional"></div>
+    <div class="field"><label>Prioridade</label><select id="taskPriority"><option value="low">Baixa</option><option value="medium" selected>Média</option><option value="high">Alta</option></select></div>
+    <div class="field"><label>Categoria</label><input type="text" id="taskCategoryInput" list="catOpts" placeholder="Digite ou escolha"><datalist id="catOpts"><option>Trabalho</option><option>Projeto</option><option>Pessoal</option></datalist></div>
+    <div class="field"><label>Data limite</label><input type="text" id="taskDueDate" placeholder="hoje, amanhã, DD/MM/AAAA"></div>
+    <div class="form-actions"><button type="submit" id="submitBtn">Adicionar</button><button type="button" id="cancelEditBtn" class="btn-outline" style="display:none;">Cancelar</button><button type="button" id="clearFormBtn" class="btn-outline">Limpar</button></div>
 </form>
 
 <main class="main-content" id="taskList"></main>
 <div class="chart-container" id="chartContainer"><canvas id="productivityChart"></canvas></div>
 
-<dialog id="editModal"><div class="modal-content"><div style="display:flex; justify-content:space-between;"><span id="editModalTitle">Editar</span><button class="icon-btn close-edit-modal"><i class="ph ph-x"></i></button></div><input type="hidden" id="editTaskId"><input type="text" id="editTitle" placeholder="Título" class="form-control"><textarea id="editDesc" placeholder="Descrição" class="form-control" rows="2"></textarea><select id="editPriority" class="form-control"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><input type="text" id="editCategory" list="catOptsEdit" placeholder="Categoria" class="form-control"><datalist id="catOptsEdit"><option>Trabalho</option><option>Projeto</option><option>Pessoal</option></datalist><input type="text" id="editDate" placeholder="Data (hoje, amanhã)" class="form-control"><div><button id="addSubtaskModalBtn" class="btn-outline" style="padding:0.1rem 0.5rem;">+ Subtarefa</button><div id="modalSubtaskList" style="margin-top:0.3rem;"></div></div><button id="saveEditBtn" class="btn-primary">Salvar</button></div></dialog>
-<dialog id="confirmDialog"><div class="modal-content"><div style="display:flex; justify-content:space-between;"><span>Confirmar</span><button class="icon-btn close-confirm"><i class="ph ph-x"></i></button></div><p id="confirmMessage"></p><div style="display:flex; gap:0.5rem; justify-content:flex-end;"><button id="confirmCancel">Cancelar</button><button id="confirmOk" class="btn-primary">OK</button></div></div></dialog>
-<dialog id="modelDialog"><div class="modal-content"><div style="display:flex; justify-content:space-between;"><span>Modelos</span><button class="icon-btn close-model"><i class="ph ph-x"></i></button></div><textarea readonly class="form-control" rows="3" id="modelText"></textarea><button id="downloadCsvModel" class="btn-primary" style="margin-top:0.3rem;">CSV</button><button id="downloadJsonModel" class="btn-primary">JSON</button></div></dialog>
+<dialog id="editModal"><div class="modal-content"><div style="display:flex; justify-content:space-between; align-items:center;"><span id="editModalTitle" style="font-weight:700;">Editar Tarefa</span><button class="icon-btn close-edit-modal"><i class="ph ph-x"></i></button></div><input type="hidden" id="editTaskId"><input type="text" id="editTitle" placeholder="Título" class="form-control"><textarea id="editDesc" placeholder="Descrição" class="form-control" rows="2"></textarea><select id="editPriority" class="form-control"><option value="low">Baixa</option><option value="medium">Média</option><option value="high">Alta</option></select><input type="text" id="editCategory" list="catOptsEdit" placeholder="Categoria" class="form-control"><datalist id="catOptsEdit"><option>Trabalho</option><option>Projeto</option><option>Pessoal</option></datalist><input type="text" id="editDate" placeholder="Data (hoje, amanhã, DD/MM/AAAA)" class="form-control"><div><button id="addSubtaskModalBtn" class="btn-outline" style="padding:0.2rem 0.6rem;">+ Adicionar subtarefa</button><div id="modalSubtaskList" style="margin-top:0.5rem;"></div></div><button id="saveEditBtn" class="btn-primary">Salvar alterações</button></div></dialog>
+<dialog id="confirmDialog"><div class="modal-content"><div style="display:flex; justify-content:space-between;"><span style="font-weight:700;">Confirmação</span><button class="icon-btn close-confirm"><i class="ph ph-x"></i></button></div><p id="confirmMessage"></p><div style="display:flex; gap:0.5rem; justify-content:flex-end;"><button id="confirmCancel">Cancelar</button><button id="confirmOk" class="btn-primary">Confirmar</button></div></div></dialog>
+<dialog id="modelDialog"><div class="modal-content"><div style="display:flex; justify-content:space-between;"><span style="font-weight:700;">Modelos de Importação</span><button class="icon-btn close-model"><i class="ph ph-x"></i></button></div><textarea readonly class="form-control" rows="4" id="modelText"></textarea><button id="downloadCsvModel" class="btn-primary" style="margin-top:0.5rem;">Baixar CSV exemplo</button><button id="downloadJsonModel" class="btn-primary">Baixar JSON exemplo</button></div></dialog>
 <div id="toast"><span id="toastMsg"></span><button id="toastAction" class="toast-action" style="display:none;">Desfazer</button></div>
-<div id="onboarding" class="onboarding-overlay" style="display:none;"><div class="onboarding-card"><h3>🚀 TaskFlow</h3><p>Compacto e rápido</p><button id="closeOnboarding" class="btn-primary">OK</button></div></div>
+<div id="onboarding" class="onboarding-overlay" style="display:none;"><div class="onboarding-card"><h3>🚀 Bem-vindo ao TaskFlow Pro</h3><p style="margin:0.5rem 0">Adicione tarefas, use filtros, arraste para reordenar, timer Pomodoro, gráficos e muito mais. Tudo compacto mas completo!</p><button id="closeOnboarding" class="btn-primary">Começar</button></div></div>
 
 <script>
-// ===================== CLASSE COMPLETA =====================
+// ===================== CLASSE COMPLETA (sem abreviações) =====================
 class TaskApp {
     constructor() {
-        this.storageKey = 'taskflow_ultracompact';
+        this.storageKey = 'taskflow_compact_fulltext';
         this.tasks = [];
         this.lastDeleted = null;
         this.sortable = null;
@@ -251,8 +250,8 @@ class TaskApp {
         else {
             const today = new Date().toISOString().slice(0,10);
             this.tasks = [
-                { id: Date.now()+1, title: "Revisar proposta", description: "Alinhar equipe", priority: "high", category: "Trabalho", date: today, completed: false, completedDate: null, subtasks: [] },
-                { id: Date.now()+2, title: "Estudar React", description: "Hooks", priority: "medium", category: "Projeto", date: today, completed: false, completedDate: null, subtasks: [] },
+                { id: Date.now()+1, title: "Revisar proposta", description: "Alinhar com equipe", priority: "high", category: "Trabalho", date: today, completed: false, completedDate: null, subtasks: [] },
+                { id: Date.now()+2, title: "Estudar React", description: "Hooks avançados", priority: "medium", category: "Projeto", date: today, completed: false, completedDate: null, subtasks: [] },
                 { id: Date.now()+3, title: "Academia", description: "Treino A", priority: "low", category: "Pessoal", date: today, completed: true, completedDate: today, subtasks: [] }
             ];
         }
@@ -260,9 +259,9 @@ class TaskApp {
     save() { localStorage.setItem(this.storageKey, JSON.stringify(this.tasks)); this.updateStats(); }
     updateStats() {
         let total = this.tasks.length, completed = this.tasks.filter(t=>t.completed).length, rate = total ? Math.round(completed/total*100) : 0;
-        document.getElementById('kpi-rate').innerHTML = `<i class="ph-fill ph-check-circle"></i>${rate}%`;
-        document.getElementById('kpi-pending').innerHTML = `<i class="ph-fill ph-hourglass-high"></i>${total-completed}`;
-        document.getElementById('kpi-high').innerHTML = `<i class="ph-fill ph-fire"></i>${this.tasks.filter(t=>!t.completed && t.priority==='high').length}`;
+        document.getElementById('kpi-rate').innerHTML = `<i class="ph-fill ph-check-circle"></i> ${rate}%`;
+        document.getElementById('kpi-pending').innerHTML = `<i class="ph-fill ph-hourglass-high"></i> ${total-completed} pendentes`;
+        document.getElementById('kpi-high').innerHTML = `<i class="ph-fill ph-fire"></i> ${this.tasks.filter(t=>!t.completed && t.priority==='high').length} críticas`;
         document.getElementById('globalProgressFill').style.width = `${rate}%`;
         if (this.chartVisible) this.drawChart();
     }
@@ -289,20 +288,20 @@ class TaskApp {
         if (sort === 'priority') { let w={high:1,medium:2,low:3}; filtered.sort((a,b)=>w[a.priority]-w[b.priority]); }
         let canDrag = (sort === 'manual' && status === 'all' && cat === 'all' && prio === 'all' && !search);
         if (this.sortable) this.sortable.option('disabled', !canDrag);
-        document.getElementById('clearFiltersBtn').style.display = (status!=='all'||cat!=='all'||prio!=='all'||search) ? 'flex' : 'none';
+        document.getElementById('clearFiltersBtn').style.display = (status!=='all'||cat!=='all'||prio!=='all'||search) ? 'inline-flex' : 'none';
         return filtered;
     }
     render() {
         let tasks = this.getFiltered(), container = document.getElementById('taskList');
         container.innerHTML = '';
-        if (!tasks.length) { container.innerHTML = '<div style="text-align:center; padding:1rem;">Nenhuma tarefa</div>'; return; }
+        if (!tasks.length) { container.innerHTML = '<div style="text-align:center; padding:1.5rem;">Nenhuma tarefa encontrada</div>'; return; }
         let today = new Date().toISOString().slice(0,10);
         tasks.forEach(task => {
             let card = document.createElement('div'); card.className = `task-card ${task.completed ? 'completed' : ''}`; card.dataset.id = task.id;
             let isOverdue = !task.completed && task.date < today;
             let subtasksHtml = task.subtasks?.length ? `<div class="task-checklist">${task.subtasks.map(sub => `<label class="checklist-item" data-task="${task.id}" data-sub="${sub.id}"><input type="checkbox" ${sub.done ? 'checked' : ''}> <span>${this.escape(sub.text)}</span></label>`).join('')}</div>` : '';
             let progressHtml = task.subtasks?.length ? `<div class="subtask-container"><span>${task.subtasks.filter(s=>s.done).length}/${task.subtasks.length}</span><div class="progress-track"><div class="progress-fill" style="width:${task.subtasks.filter(s=>s.done).length/task.subtasks.length*100}%"></div></div></div>` : '';
-            card.innerHTML = `<div class="task-header"><input type="checkbox" class="custom-cb toggle-complete" data-id="${task.id}" ${task.completed ? 'checked' : ''}><div class="task-content"><div class="task-title-row" data-id="${task.id}"><div class="priority-dot ${task.priority}"></div><div class="task-title">${this.escape(task.title)}</div></div>${task.description ? `<div class="task-desc" data-id="${task.id}">${this.escape(task.description)}</div>` : ''}${subtasksHtml}</div><div class="task-actions-row"><button class="action-icon options-btn" data-id="${task.id}"><i class="ph-bold ph-dots-three"></i></button><div class="drag-handle"><i class="ph ph-list"></i></div></div></div><div class="task-footer">${progressHtml || '<div></div>'}<div class="badge"><i class="ph ph-tag"></i> ${task.category}</div><div class="badge ${isOverdue ? 'overdue' : ''}"><i class="ph ph-calendar-blank"></i> ${task.date.split('-').reverse().join('/')}</div></div>`;
+            card.innerHTML = `<div class="task-header"><input type="checkbox" class="custom-cb toggle-complete" data-id="${task.id}" ${task.completed ? 'checked' : ''}><div class="task-content"><div class="task-title-row" data-id="${task.id}"><div class="priority-dot ${task.priority}"></div><div class="task-title">${this.escape(task.title)}</div></div>${task.description ? `<div class="task-desc" data-id="${task.id}">${this.escape(task.description)}</div>` : ''}${subtasksHtml}</div><div class="task-actions-row"><button class="action-icon options-btn" data-id="${task.id}" title="Opções"><i class="ph-bold ph-dots-three"></i></button><div class="drag-handle" title="Arrastar para reordenar"><i class="ph ph-list"></i></div></div></div><div class="task-footer">${progressHtml || '<div></div>'}<div class="badge"><i class="ph ph-tag"></i> ${task.category}</div><div class="badge ${isOverdue ? 'overdue' : ''}"><i class="ph ph-calendar-blank"></i> ${task.date.split('-').reverse().join('/')}</div></div>`;
             container.appendChild(card);
         });
         this.attachCardEvents();
@@ -317,38 +316,38 @@ class TaskApp {
     toggleComplete(id) { let t = this.tasks.find(t=>t.id===id); if(t){ t.completed = !t.completed; t.completedDate = t.completed ? new Date().toISOString().slice(0,10) : null; if(t.completed && t.subtasks) t.subtasks.forEach(s=>s.done=true); this.save(); this.render(); if(this.chartVisible) this.drawChart(); } }
     toggleSubtask(taskId, subId, checked) { let t = this.tasks.find(t=>t.id===taskId); if(t && t.subtasks){ let sub = t.subtasks.find(s=>String(s.id)===String(subId)); if(sub){ sub.done = checked; let allDone = t.subtasks.every(s=>s.done); t.completed = allDone; if(allDone) t.completedDate = new Date().toISOString().slice(0,10); else t.completedDate = null; this.save(); this.render(); if(this.chartVisible) this.drawChart(); } } }
     openEditModal(id) { let t = this.tasks.find(t=>t.id===id); if(!t) return; document.getElementById('editTaskId').value = t.id; document.getElementById('editTitle').value = t.title; document.getElementById('editDesc').value = t.description||''; document.getElementById('editPriority').value = t.priority; document.getElementById('editCategory').value = t.category; document.getElementById('editDate').value = t.date; this.renderModalSubtasks(t.subtasks||[]); document.getElementById('editModal').showModal(); }
-    renderModalSubtasks(subtasks) { let container = document.getElementById('modalSubtaskList'); container.innerHTML = ''; subtasks.forEach(sub => { let div = document.createElement('div'); div.style.display='flex'; div.style.gap='0.3rem'; div.style.marginTop='0.2rem'; div.innerHTML = `<input type="text" class="form-control" data-id="${sub.id}" value="${this.escape(sub.text)}" placeholder="Item" style="flex:1;"> <button type="button" class="action-icon del-sub-modal" style="color:var(--danger);"><i class="ph ph-trash"></i></button>`; container.appendChild(div); }); document.querySelectorAll('.del-sub-modal').forEach(btn => btn.onclick = e => btn.closest('div').remove()); }
-    saveModalEdit() { let id = parseInt(document.getElementById('editTaskId').value); let idx = this.tasks.findIndex(t=>t.id===id); if(idx===-1) return; let category = document.getElementById('editCategory').value.trim(); if(!category) category = 'Geral'; let dateRaw = document.getElementById('editDate').value; let parsedDate = this.parseDateInput(dateRaw); if(!parsedDate) { this.showToast('Data inválida', false, true); return; } let subtasks = Array.from(document.querySelectorAll('#modalSubtaskList input')).map(inp => ({ id: inp.dataset.id || 'sub_'+Date.now()+Math.random(), text: inp.value.trim(), done: false })); this.tasks[idx] = { ...this.tasks[idx], title: document.getElementById('editTitle').value.trim(), description: document.getElementById('editDesc').value, priority: document.getElementById('editPriority').value, category: category, date: parsedDate, subtasks }; this.save(); this.render(); document.getElementById('editModal').close(); this.showToast('Atualizada'); }
+    renderModalSubtasks(subtasks) { let container = document.getElementById('modalSubtaskList'); container.innerHTML = ''; subtasks.forEach(sub => { let div = document.createElement('div'); div.style.display='flex'; div.style.gap='0.3rem'; div.style.marginTop='0.3rem'; div.innerHTML = `<input type="text" class="form-control" data-id="${sub.id}" value="${this.escape(sub.text)}" placeholder="Item" style="flex:1;"> <button type="button" class="action-icon del-sub-modal" style="color:var(--danger);"><i class="ph ph-trash"></i></button>`; container.appendChild(div); }); document.querySelectorAll('.del-sub-modal').forEach(btn => btn.onclick = e => btn.closest('div').remove()); }
+    saveModalEdit() { let id = parseInt(document.getElementById('editTaskId').value); let idx = this.tasks.findIndex(t=>t.id===id); if(idx===-1) return; let category = document.getElementById('editCategory').value.trim(); if(!category) category = 'Geral'; let dateRaw = document.getElementById('editDate').value; let parsedDate = this.parseDateInput(dateRaw); if(!parsedDate) { this.showToast('Data inválida', false, true); return; } let subtasks = Array.from(document.querySelectorAll('#modalSubtaskList input')).map(inp => ({ id: inp.dataset.id || 'sub_'+Date.now()+Math.random(), text: inp.value.trim(), done: false })); this.tasks[idx] = { ...this.tasks[idx], title: document.getElementById('editTitle').value.trim(), description: document.getElementById('editDesc').value, priority: document.getElementById('editPriority').value, category: category, date: parsedDate, subtasks }; this.save(); this.render(); document.getElementById('editModal').close(); this.showToast('Tarefa atualizada'); }
     handleInlineSubmit(e) { e.preventDefault(); let title = document.getElementById('taskTitle').value.trim(); if(!title) return this.showToast('Título obrigatório', false, true); let due = this.parseDateInput(document.getElementById('taskDueDate').value) || new Date().toISOString().slice(0,10); if(due < new Date().toISOString().slice(0,10)) return this.showToast('Data não pode ser anterior a hoje', false, true); let category = document.getElementById('taskCategoryInput').value.trim(); if(!category) category = 'Geral'; let data = { title, description: document.getElementById('taskDesc').value.trim(), priority: document.getElementById('taskPriority').value, category: category, date: due, subtasks: [] }; if(this.editingId){ let idx = this.tasks.findIndex(t=>t.id===this.editingId); if(idx!==-1) this.tasks[idx] = { ...this.tasks[idx], ...data }; this.cancelEdit(); } else this.tasks.unshift({ id: Date.now(), completed: false, completedDate: null, ...data }); this.save(); this.render(); this.clearForm(); }
-    startEditInline(id) { let t = this.tasks.find(t=>t.id===id); if(t){ this.editingId = id; document.getElementById('taskTitle').value = t.title; document.getElementById('taskDesc').value = t.description||''; document.getElementById('taskPriority').value = t.priority; document.getElementById('taskCategoryInput').value = t.category; document.getElementById('taskDueDate').value = t.date; document.getElementById('submitBtn').innerText = '✏️'; document.getElementById('cancelEditBtn').style.display = 'inline-block'; } }
-    cancelEdit() { this.editingId = null; this.clearForm(); document.getElementById('submitBtn').innerText = '+'; document.getElementById('cancelEditBtn').style.display = 'none'; }
+    startEditInline(id) { let t = this.tasks.find(t=>t.id===id); if(t){ this.editingId = id; document.getElementById('taskTitle').value = t.title; document.getElementById('taskDesc').value = t.description||''; document.getElementById('taskPriority').value = t.priority; document.getElementById('taskCategoryInput').value = t.category; document.getElementById('taskDueDate').value = t.date; document.getElementById('submitBtn').innerText = 'Atualizar'; document.getElementById('cancelEditBtn').style.display = 'inline-block'; } }
+    cancelEdit() { this.editingId = null; this.clearForm(); document.getElementById('submitBtn').innerText = 'Adicionar'; document.getElementById('cancelEditBtn').style.display = 'none'; }
     clearForm() { document.getElementById('taskTitle').value = ''; document.getElementById('taskDesc').value = ''; document.getElementById('taskPriority').value = 'medium'; document.getElementById('taskCategoryInput').value = ''; document.getElementById('taskDueDate').value = ''; this.editingId = null; }
-    showOptions(id) { let sheet = document.createElement('dialog'); sheet.className = 'bottom-sheet'; sheet.innerHTML = `<div class="modal-content"><div style="display:flex; justify-content:space-between;"><span>Opções</span><button class="close-opt icon-btn"><i class="ph ph-x"></i></button></div><button id="optEditInline">Editar rápido</button><button id="optEditFull">Editar completo</button><button id="optDup">Duplicar</button><button id="optDel" class="danger">Excluir</button></div>`; document.body.appendChild(sheet); sheet.showModal(); sheet.querySelector('#optEditInline').onclick = () => { this.startEditInline(id); sheet.close(); }; sheet.querySelector('#optEditFull').onclick = () => { this.openEditModal(id); sheet.close(); }; sheet.querySelector('#optDup').onclick = () => { let t = this.tasks.find(t=>t.id===id); if(t) this.tasks.unshift({ ...t, id: Date.now(), title: t.title + ' (cópia)', completed: false, completedDate: null, subtasks: [] }); this.save(); this.render(); sheet.close(); }; sheet.querySelector('#optDel').onclick = async () => { if(await this.confirm('Excluir tarefa?')){ this.lastDeleted = this.tasks.find(t=>t.id===id); this.tasks = this.tasks.filter(t=>t.id!==id); this.save(); this.render(); this.showToast('Removida', true); } sheet.close(); }; sheet.querySelector('.close-opt').onclick = () => sheet.close(); }
-    undoDelete() { if(this.lastDeleted){ this.tasks.unshift(this.lastDeleted); this.lastDeleted = null; this.save(); this.render(); this.showToast('Restaurado'); } }
-    deleteCompleted() { if(this.tasks.some(t=>t.completed)){ this.confirm('Remover todas concluídas?').then(ok=>{ if(ok){ this.tasks = this.tasks.filter(t=>!t.completed); this.save(); this.render(); this.showToast('Concluídas removidas'); } }); } else this.showToast('Nenhuma concluída'); }
-    exportData() { let blob = new Blob([JSON.stringify(this.tasks,null,2)], {type:'application/json'}); let a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `taskflow_${new Date().toISOString().slice(0,19)}.json`; a.click(); this.showToast('Backup'); }
-    exportPDF() { let element = document.getElementById('taskList'); if(element.children.length===0) return this.showToast('Nenhuma tarefa'); let opt = { margin: 0.5, filename: `taskflow_${new Date().toISOString().slice(0,10)}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }; html2pdf().set(opt).from(element).save(); this.showToast('PDF'); }
-    importData(file) { let reader = new FileReader(); reader.onload = e => { try{ let imported = JSON.parse(e.target.result); if(Array.isArray(imported)){ this.confirm('Restaurar backup substitui todas as tarefas. Continuar?').then(ok=>{ if(ok){ this.tasks = imported; this.save(); this.render(); this.showToast('Restaurado'); } }); } else throw new Error(); } catch(err){ this.showToast('Arquivo inválido', false, true); } }; reader.readAsText(file); }
+    showOptions(id) { let sheet = document.createElement('dialog'); sheet.className = 'bottom-sheet'; sheet.innerHTML = `<div class="modal-content"><div style="display:flex; justify-content:space-between;"><span style="font-weight:700;">Opções da tarefa</span><button class="close-opt icon-btn"><i class="ph ph-x"></i></button></div><button id="optEditInline" style="background:var(--bg-base); border:1px solid var(--border); margin-bottom:0.3rem;">Editar rápida</button><button id="optEditFull" style="background:var(--bg-base); border:1px solid var(--border);">Editar completa (com subtarefas)</button><button id="optDup" style="background:var(--bg-base); border:1px solid var(--border);">Duplicar</button><button id="optDel" class="danger" style="background:rgba(239,68,68,0.1); border:1px solid var(--danger);">Excluir tarefa</button></div>`; document.body.appendChild(sheet); sheet.showModal(); sheet.querySelector('#optEditInline').onclick = () => { this.startEditInline(id); sheet.close(); }; sheet.querySelector('#optEditFull').onclick = () => { this.openEditModal(id); sheet.close(); }; sheet.querySelector('#optDup').onclick = () => { let t = this.tasks.find(t=>t.id===id); if(t) this.tasks.unshift({ ...t, id: Date.now(), title: t.title + ' (cópia)', completed: false, completedDate: null, subtasks: [] }); this.save(); this.render(); sheet.close(); }; sheet.querySelector('#optDel').onclick = async () => { if(await this.confirm('Excluir esta tarefa permanentemente?')){ this.lastDeleted = this.tasks.find(t=>t.id===id); this.tasks = this.tasks.filter(t=>t.id!==id); this.save(); this.render(); this.showToast('Tarefa removida', true); } sheet.close(); }; sheet.querySelector('.close-opt').onclick = () => sheet.close(); }
+    undoDelete() { if(this.lastDeleted){ this.tasks.unshift(this.lastDeleted); this.lastDeleted = null; this.save(); this.render(); this.showToast('Tarefa restaurada'); } }
+    deleteCompleted() { if(this.tasks.some(t=>t.completed)){ this.confirm('Remover todas as tarefas concluídas?').then(ok=>{ if(ok){ this.tasks = this.tasks.filter(t=>!t.completed); this.save(); this.render(); this.showToast('Concluídas removidas'); } }); } else this.showToast('Nenhuma tarefa concluída'); }
+    exportData() { let blob = new Blob([JSON.stringify(this.tasks,null,2)], {type:'application/json'}); let a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `taskflow_${new Date().toISOString().slice(0,19)}.json`; a.click(); this.showToast('Backup exportado'); }
+    exportPDF() { let element = document.getElementById('taskList'); if(element.children.length===0) return this.showToast('Nenhuma tarefa para exportar'); let opt = { margin: 0.5, filename: `taskflow_${new Date().toISOString().slice(0,10)}.pdf`, image: { type: 'jpeg', quality: 0.98 }, html2canvas: { scale: 2 }, jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' } }; html2pdf().set(opt).from(element).save(); this.showToast('PDF gerado'); }
+    importData(file) { let reader = new FileReader(); reader.onload = e => { try{ let imported = JSON.parse(e.target.result); if(Array.isArray(imported)){ this.confirm('Restaurar backup substitui todas as tarefas atuais. Continuar?').then(ok=>{ if(ok){ this.tasks = imported; this.save(); this.render(); this.showToast('Backup restaurado'); } }); } else throw new Error(); } catch(err){ this.showToast('Arquivo inválido', false, true); } }; reader.readAsText(file); }
     parseCSV(csv) { let lines = csv.split('\n').slice(1); return lines.filter(l=>l.trim()).map(l => { let [title, desc, priority, category, date] = l.split(',').map(s=>s.replace(/^"|"$/g, '')); return { title, description: desc||'', priority: priority||'medium', category: category||'Geral', date: date||new Date().toISOString().slice(0,10), subtasks: [] }; }); }
-    importList(file) { let reader = new FileReader(); reader.onload = e => { let content = e.target.result; if(file.name.endsWith('.json')){ let imported = JSON.parse(content); if(Array.isArray(imported)) this.tasks.unshift(...imported.map(t=>({ ...t, id: Date.now()+Math.random(), completed: false, completedDate: null }))); } else if(file.name.endsWith('.csv')){ let imported = this.parseCSV(content); this.tasks.unshift(...imported.map(t=>({ ...t, id: Date.now()+Math.random(), completed: false, completedDate: null }))); } this.save(); this.render(); this.showToast('Importado'); }; reader.readAsText(file); }
-    downloadModel(type) { let content = type==='csv' ? 'title,description,priority,category,date\n"Exemplo","Desc","high","Trabalho","hoje"' : JSON.stringify([{title:"Exemplo",description:"Desc",priority:"high",category:"Trabalho",date:"hoje",subtasks:[]}],null,2); let blob = new Blob([content], {type:type==='csv'?'text/csv':'application/json'}); let a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `modelo.${type}`; a.click(); }
+    importList(file) { let reader = new FileReader(); reader.onload = e => { let content = e.target.result; if(file.name.endsWith('.json')){ let imported = JSON.parse(content); if(Array.isArray(imported)) this.tasks.unshift(...imported.map(t=>({ ...t, id: Date.now()+Math.random(), completed: false, completedDate: null }))); } else if(file.name.endsWith('.csv')){ let imported = this.parseCSV(content); this.tasks.unshift(...imported.map(t=>({ ...t, id: Date.now()+Math.random(), completed: false, completedDate: null }))); } this.save(); this.render(); this.showToast('Lista importada'); }; reader.readAsText(file); }
+    downloadModel(type) { let content = type==='csv' ? 'title,description,priority,category,date\n"Exemplo","Descrição","high","Trabalho","hoje"' : JSON.stringify([{title:"Exemplo",description:"Descrição",priority:"high",category:"Trabalho",date:"hoje",subtasks:[]}],null,2); let blob = new Blob([content], {type:type==='csv'?'text/csv':'application/json'}); let a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `modelo.${type}`; a.click(); }
     toggleChart(force) { this.chartVisible = force!==undefined ? force : !this.chartVisible; document.getElementById('chartContainer').classList.toggle('visible', this.chartVisible); localStorage.setItem('chartVisible', this.chartVisible); if(this.chartVisible) this.drawChart(); }
     drawChart() { let canvas = document.getElementById('productivityChart'), ctx = canvas.getContext('2d'); let days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']; let weekCounts = new Array(7).fill(0); let today = new Date(); this.tasks.filter(t=>t.completed && t.completedDate).forEach(t=>{ let d = new Date(t.completedDate); if((today-d)/(1000*3600*24)<=7) weekCounts[d.getDay()]++; }); let max = Math.max(...weekCounts,1); canvas.width = canvas.offsetWidth*2; canvas.height = canvas.offsetHeight*2; ctx.clearRect(0,0,canvas.width,canvas.height); let barW = canvas.width/14; days.forEach((d,i)=>{ let h = (weekCounts[i]/max)*(canvas.height-20); ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--primary'); ctx.fillRect(i*(barW+5), canvas.height-h-10, barW, h); ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-muted'); ctx.fillText(d, i*(barW+5), canvas.height-5); }); }
     toggleTheme() { let isLight = document.body.classList.toggle('light-theme'); localStorage.setItem('theme', isLight ? 'light' : 'dark'); this.applyTheme(isLight); }
     applyTheme(isLight) { if(isLight) document.body.classList.add('light-theme'); else document.body.classList.remove('light-theme'); document.getElementById('themeToggleQuick').innerHTML = `<i class="ph ph-${isLight ? 'sun' : 'moon'}"></i>`; }
     initSortable() { this.sortable = new Sortable(document.getElementById('taskList'), { animation: 150, handle: '.drag-handle', ghostClass: 'sortable-ghost', onEnd: (evt) => { let moved = this.tasks.splice(evt.oldIndex, 1)[0]; this.tasks.splice(evt.newIndex, 0, moved); this.save(); this.render(); } }); }
-    startPomodoro() { if(this.pomodoroRunning){ clearInterval(this.pomodoroInterval); this.pomodoroRunning=false; document.getElementById('pomodoroBtn').classList.remove('pomodoro-active'); document.getElementById('pomodoroBar').style.width='0%'; return; } this.pomodoroRemaining = 25*60; this.pomodoroRunning=true; document.getElementById('pomodoroBtn').classList.add('pomodoro-active'); this.pomodoroInterval = setInterval(()=>{ if(this.pomodoroRemaining<=0){ clearInterval(this.pomodoroInterval); this.pomodoroRunning=false; this.showToast('Pomodoro concluído!'); document.getElementById('pomodoroBtn').classList.remove('pomodoro-active'); if(Notification.permission==='granted') new Notification('TaskFlow', { body: 'Foco finalizado!' }); } else { this.pomodoroRemaining--; let pct = ((25*60 - this.pomodoroRemaining)/(25*60))*100; document.getElementById('pomodoroBar').style.width = `${pct}%`; } },1000); }
-    checkDueDates() { let today = new Date().toISOString().slice(0,10); let overdue = this.tasks.filter(t=>!t.completed && t.date < today).length; if(overdue && !this.notifiedOverdue) { this.showToast(`${overdue} atrasada(s)`); if(Notification.permission==='granted') new Notification('Atraso!', { body: `${overdue} tarefa(s) atrasada(s).` }); this.notifiedOverdue = true; } else if(overdue===0) this.notifiedOverdue = false; }
+    startPomodoro() { if(this.pomodoroRunning){ clearInterval(this.pomodoroInterval); this.pomodoroRunning=false; document.getElementById('pomodoroBtn').classList.remove('pomodoro-active'); document.getElementById('pomodoroBar').style.width='0%'; return; } this.pomodoroRemaining = 25*60; this.pomodoroRunning=true; document.getElementById('pomodoroBtn').classList.add('pomodoro-active'); this.pomodoroInterval = setInterval(()=>{ if(this.pomodoroRemaining<=0){ clearInterval(this.pomodoroInterval); this.pomodoroRunning=false; this.showToast('Pomodoro concluído! 🎉'); document.getElementById('pomodoroBtn').classList.remove('pomodoro-active'); if(Notification.permission==='granted') new Notification('TaskFlow Pro', { body: 'Tempo de foco finalizado!' }); } else { this.pomodoroRemaining--; let pct = ((25*60 - this.pomodoroRemaining)/(25*60))*100; document.getElementById('pomodoroBar').style.width = `${pct}%`; } },1000); }
+    checkDueDates() { let today = new Date().toISOString().slice(0,10); let overdue = this.tasks.filter(t=>!t.completed && t.date < today).length; if(overdue && !this.notifiedOverdue) { this.showToast(`${overdue} tarefa(s) atrasada(s)`); if(Notification.permission==='granted') new Notification('Tarefas atrasadas', { body: `Você tem ${overdue} tarefa(s) atrasada(s).` }); this.notifiedOverdue = true; } else if(overdue===0) this.notifiedOverdue = false; }
     requestNotificationPermission() { if ('Notification' in window && Notification.permission !== 'granted' && Notification.permission !== 'denied') Notification.requestPermission(); }
     confirm(msg) { return new Promise(resolve => { let dlg = document.getElementById('confirmDialog'); document.getElementById('confirmMessage').innerText = msg; dlg.showModal(); let ok = () => { resolve(true); dlg.close(); cleanup(); }; let cancel = () => { resolve(false); dlg.close(); cleanup(); }; let cleanup = () => { document.getElementById('confirmOk').removeEventListener('click', ok); document.getElementById('confirmCancel').removeEventListener('click', cancel); document.querySelector('.close-confirm').removeEventListener('click', cancel); }; document.getElementById('confirmOk').addEventListener('click', ok); document.getElementById('confirmCancel').addEventListener('click', cancel); document.querySelector('.close-confirm').addEventListener('click', cancel); }); }
-    showToast(msg, undo=false, isError=false) { let toast = document.getElementById('toast'); document.getElementById('toastMsg').innerHTML = msg; let btn = document.getElementById('toastAction'); btn.style.display = undo ? 'block' : 'none'; btn.onclick = () => { this.undoDelete(); toast.classList.remove('show'); }; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 2000); }
+    showToast(msg, undo=false, isError=false) { let toast = document.getElementById('toast'); document.getElementById('toastMsg').innerHTML = msg; let btn = document.getElementById('toastAction'); btn.style.display = undo ? 'block' : 'none'; btn.onclick = () => { this.undoDelete(); toast.classList.remove('show'); }; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 2500); }
     escape(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
     bindEvents() {
         document.getElementById('inlineTaskForm').onsubmit = e => this.handleInlineSubmit(e);
         document.getElementById('cancelEditBtn').onclick = () => this.cancelEdit();
         document.getElementById('clearFormBtn').onclick = () => this.clearForm();
         document.getElementById('saveEditBtn').onclick = () => this.saveModalEdit();
-        document.getElementById('addSubtaskModalBtn').onclick = () => { let container = document.getElementById('modalSubtaskList'); let div = document.createElement('div'); div.style.display='flex'; div.style.gap='0.3rem'; div.style.marginTop='0.2rem'; div.innerHTML = `<input type="text" class="form-control" data-id="sub_${Date.now()}" placeholder="Item" style="flex:1;"> <button type="button" class="action-icon del-sub-modal" style="color:var(--danger);"><i class="ph ph-trash"></i></button>`; container.appendChild(div); div.querySelector('.del-sub-modal').onclick = () => div.remove(); };
+        document.getElementById('addSubtaskModalBtn').onclick = () => { let container = document.getElementById('modalSubtaskList'); let div = document.createElement('div'); div.style.display='flex'; div.style.gap='0.3rem'; div.style.marginTop='0.3rem'; div.innerHTML = `<input type="text" class="form-control" data-id="sub_${Date.now()}" placeholder="Novo item" style="flex:1;"> <button type="button" class="action-icon del-sub-modal" style="color:var(--danger);"><i class="ph ph-trash"></i></button>`; container.appendChild(div); div.querySelector('.del-sub-modal').onclick = () => div.remove(); };
         document.querySelectorAll('.close-edit-modal, .close-model, .close-confirm').forEach(btn => btn.onclick = () => btn.closest('dialog').close());
         document.getElementById('exportBtn').onclick = () => this.exportData();
         document.getElementById('exportPdfBtn').onclick = () => this.exportPDF();
