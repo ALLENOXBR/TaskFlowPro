@@ -1,548 +1,477 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-PT">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
-    <title>TaskFlow Pro | Modo Escuro Refinado</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="theme-color" content="#2D2A2B">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>TaskFlow Pro Unificado | Contraste Total</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            transition: background-color 0.2s ease, border-color 0.2s, box-shadow 0.2s, color 0.2s;
-        }
-
-        /* Tema Claro (padrão) */
+        /* TEMA ESCURO (PADRÃO) - ALTO CONTRASTE */
         :root {
-            --bg-gradient-start: #fff5e0;
-            --bg-gradient-end: #ffecb3;
-            --card-bg: #FFFEF5;
-            --card-border: rgba(255, 190, 50, 0.5);
-            --text-primary: #2c2400;
-            --text-secondary: #7a5c2c;
-            --text-muted: #a07e3e;
-            --input-bg: #FFFCF0;
-            --input-border: #FFE0A3;
-            --input-placeholder: #c2a05c;
-            --badge-bg: #FEF0DA;
-            --badge-text: #AA771C;
-            --hero-start: #FFD966;
-            --hero-end: #FFB347;
-            --btn-gradient-start: #F5BC42;
-            --btn-gradient-end: #F3A712;
-            --btn-text: #2c2400;
-            --shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.12);
-            --task-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
-            --border-light: #FFDEA5;
-            --completed-bg: #FEF9E6;
+            --bg-base: #121212;
+            --bg-surface: #1E1E1E;
+            --bg-surface-hover: #2C2C2C;
+            --bg-glass: rgba(30, 30, 30, 0.9);
+            --border-color: #3A3A3A;
+            --border-light: rgba(255, 255, 255, 0.08);
+            --text-title: #FFFFFF;
+            --text-base: #F0F0F0;
+            --text-support: #C0C0C0;
+            --brand-primary: #F97316;
+            --brand-glow: rgba(249, 115, 22, 0.5);
+            --brand-gradient: linear-gradient(135deg, #FF7F30 0%, #E85D04 100%);
+            --danger: #ef4444;
+            --danger-glow: rgba(239, 68, 68, 0.3);
+            --success: #10b981;
+            --warning: #f59e0b;
+            --radius-sm: 6px;
+            --radius-md: 10px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -2px rgba(0, 0, 0, 0.5);
+            --card-shadow-hover: 0 15px 25px -5px rgba(0, 0, 0, 0.6);
+            --pattern-color: rgba(255, 255, 255, 0.02);
         }
 
-        /* Tema Escuro REFINADO - contraste máximo */
-        body.dark {
-            --bg-gradient-start: #0f0c06;
-            --bg-gradient-end: #1c170d;
-            --card-bg: #1e1a12;
-            --card-border: #d49a2a;
-            --text-primary: #fef3c7;
-            --text-secondary: #e6cc8a;
-            --text-muted: #cbaa5e;
-            --input-bg: #2a241a;
-            --input-border: #b87e2a;
-            --input-placeholder: #9b7a42;
-            --badge-bg: #2f2618;
-            --badge-text: #f5bc5a;
-            --hero-start: #b87a2a;
-            --hero-end: #9b5e1a;
-            --btn-gradient-start: #d49c2a;
-            --btn-gradient-end: #b87a1a;
-            --btn-text: #fef3c7;
-            --shadow: 0 20px 30px -15px rgba(0, 0, 0, 0.5);
-            --task-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
-            --border-light: #d49a2a;
-            --completed-bg: #2a2418;
+        /* TEMA CLARO */
+        body.light-theme {
+            --bg-base: #f8f9fa;
+            --bg-surface: #ffffff;
+            --bg-surface-hover: #f1f3f5;
+            --bg-glass: rgba(255, 255, 255, 0.9);
+            --border-color: #e9ecef;
+            --border-light: rgba(0, 0, 0, 0.02);
+            --text-title: #09090b;
+            --text-base: #3f3f46;
+            --text-support: #71717a;
+            --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -2px rgba(0, 0, 0, 0.03);
+            --card-shadow-hover: 0 10px 15px -5px rgba(0, 0, 0, 0.08);
+            --pattern-color: rgba(0, 0, 0, 0.04);
         }
 
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: radial-gradient(ellipse at 30% 10%, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-            min-height: 100vh;
-            padding: 1rem;
-            position: relative;
-            color: var(--text-primary);
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { 
+            background-color: var(--bg-base); 
+            color: var(--text-base); 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            overflow-x: hidden;
+            background-image: radial-gradient(var(--pattern-color) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
+        :focus-visible { outline: 2px solid var(--brand-primary); outline-offset: 2px; border-radius: 2px; }
 
-        .app-wrapper {
-            max-width: 1400px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Toast */
-        #toast {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #2c2c2c;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            z-index: 1000;
-            transition: transform 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            pointer-events: none;
-            white-space: nowrap;
-        }
-        body.dark #toast { background: #1e1a12; color: #fef3c7; border: 1px solid #d49a2a; }
-        #toast.show { transform: translateX(-50%) translateY(0); }
-        @media (max-width: 600px) {
-            #toast { white-space: normal; text-align: center; max-width: 90%; font-size: 0.75rem; }
-        }
-
-        /* Hero */
-        .hero {
-            background: linear-gradient(135deg, var(--hero-start) 0%, var(--hero-end) 100%);
-            border-radius: 2rem;
-            padding: 1rem 1.5rem;
-            margin-bottom: 1.5rem;
+        /* HEADER E DEMAIS COMPONENTES (MESMOS ESTILOS, MAS GARANTINDO USO DAS VARIÁVEIS) */
+        .app-header {
+            background-color: var(--bg-glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            padding: env(safe-area-inset-top, 0.8rem) 1.2rem 0.8rem 1.2rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+            flex-direction: column;
             gap: 1rem;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.2);
         }
-        .title-section h1 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            background: linear-gradient(145deg, #2c2100, #4a3800);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .header-top { display: flex; justify-content: space-between; align-items: center; height: 44px; gap: 0.5rem; }
+        .brand { font-size: 1.15rem; font-weight: 800; color: var(--text-title); display: flex; align-items: center; gap: 0.5rem; letter-spacing: -0.03em; flex-shrink: 0; }
+        .brand .logo-box { background: var(--brand-gradient); padding: 0.4rem; border-radius: var(--radius-sm); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px var(--brand-glow); }
+        .search-container { flex: 1; position: relative; max-width: 450px; min-width: 0; }
+        .search-container input {
+            width: 100%; background: var(--bg-surface); border: 1px solid var(--border-color);
+            color: var(--text-title); padding: 0.5rem 1rem 0.5rem 2.4rem; border-radius: 999px;
+            font-size: 0.85rem; outline: none; transition: var(--transition);
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
         }
-        body.dark .title-section h1 {
-            background: linear-gradient(145deg, #ffe5a3, #ffcf6e);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .search-container input::placeholder { color: var(--text-support); opacity: 0.7; }
+        .search-container input:focus { border-color: var(--brand-primary); box-shadow: 0 0 0 3px var(--brand-glow); }
+        .search-container i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-support); font-size: 1.1rem; }
+        .header-actions { display: flex; gap: 0.5rem; align-items: center; }
+        .icon-btn {
+            background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-title);
+            font-size: 1.2rem; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--transition);
         }
-        .dark-toggle {
-            background: #2c2c2c;
-            border: none;
-            border-radius: 2rem;
-            padding: 0.4rem 1rem;
-            font-weight: 800;
-            cursor: pointer;
-            color: white;
-        }
-        body.dark .dark-toggle {
-            background: #fef3c7;
-            color: #1e1a12;
-        }
-        .progress-card {
-            background: rgba(0,0,0,0.2);
-            backdrop-filter: blur(8px);
-            border-radius: 1.8rem;
-            padding: 0.5rem 1.2rem;
-            min-width: 180px;
-        }
-        body.dark .progress-card { background: rgba(0,0,0,0.5); }
-        .progress-label { font-size: 0.7rem; font-weight: 800; display: flex; justify-content: space-between; color: var(--text-primary); }
-        .progress-bar-bg { background: rgba(0,0,0,0.3); border-radius: 60px; height: 8px; margin-top: 6px; overflow: hidden; }
-        .progress-fill { background: linear-gradient(90deg, #f0a52e, #ffbe3c); width: 0%; height: 100%; border-radius: 60px; transition: width 0.3s; }
+        .icon-btn:hover { background: var(--bg-surface-hover); transform: scale(1.05); }
+        .pomodoro-active { background: var(--brand-gradient); border-color: transparent; color: #fff; box-shadow: 0 0 15px var(--brand-glow); }
 
-        /* Cards */
-        .card-gold {
-            background: var(--card-bg);
-            border-radius: 1.8rem;
-            box-shadow: var(--shadow), 0 0 0 1px var(--card-border);
-            padding: 1.2rem;
-            margin-bottom: 1.5rem;
+        .dropdown-menu {
+            position: absolute; right: 0; top: 50px; background: var(--bg-glass); backdrop-filter: blur(16px);
+            border: 1px solid var(--border-color); border-radius: var(--radius-lg); box-shadow: var(--card-shadow-hover);
+            min-width: 240px; display: none; flex-direction: column; padding: 0.5rem; z-index: 100;
         }
+        .dropdown-menu.active { display: flex; animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        .dropdown-item {
+            display: flex; align-items: center; gap: 0.6rem; padding: 0.7rem 0.8rem; color: var(--text-title);
+            font-size: 0.85rem; font-weight: 500; cursor: pointer; border-radius: var(--radius-md); transition: var(--transition);
+        }
+        .dropdown-item:hover { background: var(--bg-surface); }
+        .dropdown-item.danger { color: var(--danger); }
+        .dropdown-item.danger:hover { background: rgba(239, 68, 68, 0.1); }
 
-        /* Formulário */
-        .form-row { display: flex; flex-wrap: wrap; gap: 0.8rem; align-items: flex-end; }
-        .field { flex: 1 1 160px; display: flex; flex-direction: column; gap: 0.3rem; }
-        .field label { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; color: var(--text-secondary); }
-        input, select, textarea {
-            background: var(--input-bg);
-            border: 1.5px solid var(--input-border);
-            border-radius: 1.5rem;
-            padding: 0.7rem 1rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-primary);
-            outline: none;
+        .sub-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; overflow-x: auto; padding-bottom: 0.4rem; scrollbar-width: none; }
+        .sub-header::-webkit-scrollbar { display: none; }
+        .mini-stats { display: flex; gap: 0.8rem; font-size: 0.75rem; font-weight: 600; color: var(--text-support); white-space: nowrap; flex-shrink: 0; }
+        .mini-stats span { display: flex; align-items: center; gap: 0.3rem; background: var(--bg-surface); padding: 0.3rem 0.8rem; border-radius: 999px; border: 1px solid var(--border-color); }
+        .filters-scroll { display: flex; gap: 0.5rem; overflow-x: auto; flex-shrink: 0; align-items: center; }
+        .filter-pill {
+            background: var(--bg-surface); border: 1px solid var(--border-color); color: var(--text-title);
+            padding: 0.4rem 0.8rem; border-radius: 999px; font-size: 0.75rem; font-weight: 500; outline: none; cursor: pointer; white-space: nowrap;
         }
-        input::placeholder, textarea::placeholder { color: var(--input-placeholder); font-weight: 400; }
-        input:focus, select:focus { border-color: #FFB347; box-shadow: 0 0 0 3px rgba(255,180,70,0.3); }
-        button {
-            background: linear-gradient(105deg, var(--btn-gradient-start), var(--btn-gradient-end));
-            border: none;
-            padding: 0.7rem 1.3rem;
-            border-radius: 2rem;
-            font-weight: 800;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: 0.2s;
-            min-height: 44px;
-            color: var(--btn-text);
+        .filter-pill:hover { border-color: var(--text-support); }
+        .global-progress { position: absolute; bottom: 0; left: 0; width: 100%; height: 3px; background: transparent; }
+        .global-progress-fill { height: 100%; background: var(--brand-gradient); width: 0%; transition: width 0.6s; }
+        .pomodoro-bar { height: 3px; background: #10b981; width: 0%; transition: width 1s linear; }
+
+        .main-content {
+            flex: 1; padding: 1.5rem 1rem 120px 1rem; display: flex; flex-direction: column; gap: 1rem;
+            max-width: 1000px; margin: 0 auto; width: 100%;
         }
-        button:hover { transform: translateY(-2px); filter: brightness(1.02); }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--btn-gradient-start);
-            color: var(--btn-gradient-start);
-            box-shadow: none;
-        }
-        body.dark .btn-outline { color: #f5bc5a; border-color: #f5bc5a; }
-        .toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; margin-top: 0.2rem; }
-        .filter-group { display: flex; flex-wrap: nowrap; gap: 0.6rem; overflow-x: auto; padding-bottom: 0.4rem; -webkit-overflow-scrolling: touch; }
-        .tasks-board { display: flex; flex-direction: column; gap: 0.9rem; }
+        .main-content.grid-view { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+
         .task-card {
-            background: var(--card-bg);
-            border-radius: 1.5rem;
-            padding: 0.8rem 1rem;
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 0.7rem;
-            box-shadow: var(--task-shadow), 0 0 0 1px var(--border-light);
-            border-left: 8px solid;
-            cursor: grab;
-            transition: 0.15s;
+            background: var(--bg-surface); border: 1px solid var(--border-color); border-radius: var(--radius-lg);
+            padding: 1.2rem; display: flex; flex-direction: column; gap: 0.8rem; position: relative;
+            box-shadow: var(--card-shadow); transition: var(--transition);
         }
-        .task-card.dragging { opacity: 0.4; cursor: grabbing; }
-        .priority-high { border-left-color: #F97316; }
-        .priority-medium { border-left-color: #FBBF24; }
-        .priority-low { border-left-color: #A3E635; }
-        .completed-task { opacity: 0.8; background: var(--completed-bg); border-left-color: #CBB26A; }
-        .task-title { font-weight: 800; display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; color: var(--text-primary); }
-        .task-check { width: 1.3rem; height: 1.3rem; accent-color: #F5A623; cursor: pointer; }
-        .meta-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; font-size: 0.65rem; }
-        .badge {
-            border-radius: 40px;
-            padding: 0.2rem 0.8rem;
-            background: var(--badge-bg);
-            font-weight: 700;
-            color: var(--badge-text);
-        }
-        .task-actions { display: flex; gap: 0.5rem; }
-        .task-actions button {
-            background: transparent;
-            border: 1px solid var(--border-light);
-            padding: 0.3rem 0.8rem;
-            font-size: 0.7rem;
-            min-height: 36px;
-            color: var(--text-secondary);
-        }
-        body.dark .task-actions button { color: #f5bc5a; border-color: #f5bc5a; }
-        .empty-message { text-align: center; padding: 2rem; font-weight: 600; color: var(--text-muted); }
-        footer { text-align: center; margin-top: 1.5rem; font-size: 0.7rem; font-weight: 600; color: var(--text-muted); }
+        .task-card.today { border-color: var(--brand-primary); box-shadow: 0 0 0 1px var(--brand-glow); }
+        .task-card:hover { transform: translateY(-2px); box-shadow: var(--card-shadow-hover); border-color: var(--brand-primary); }
+        .task-card.sortable-ghost { opacity: 0.4; transform: scale(0.98); }
+        .task-card.completed { opacity: 0.6; background: var(--bg-base); }
+        .task-card.completed .task-title { text-decoration: line-through; color: var(--text-support); }
 
-        @media (max-width: 700px) {
-            body { padding: 0.8rem; }
-            .hero { flex-direction: column; text-align: center; }
-            .form-row { flex-direction: column; }
-            .field { width: 100%; }
-            button, input, select { min-height: 48px; font-size: 1rem; }
-            .drag-handle { display: none; }
-            .task-card { flex-direction: column; align-items: stretch; }
-            .task-actions { justify-content: flex-end; }
+        .task-header { display: flex; gap: 0.8rem; align-items: flex-start; justify-content: space-between; }
+        .custom-cb {
+            appearance: none; width: 22px; height: 22px; border: 2px solid var(--text-support); border-radius: 6px;
+            cursor: pointer; position: relative; flex-shrink: 0; background: var(--bg-base);
         }
+        .custom-cb:checked { background: var(--brand-primary); border-color: var(--brand-primary); }
+        .custom-cb:checked::after { content: '✓'; position: absolute; color: #fff; font-size: 0.9rem; font-weight: 900; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+        .task-content { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 0.4rem; }
+        .task-title-row { display: flex; align-items: flex-start; gap: 0.6rem; cursor: pointer; }
+        .priority-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 0.4rem; }
+        .priority-dot.high { background: var(--danger); }
+        .priority-dot.medium { background: var(--warning); }
+        .priority-dot.low { background: var(--success); }
+        .task-title { font-size: 1.05rem; font-weight: 700; color: var(--text-title); }
+        .task-desc { font-size: 0.85rem; color: var(--text-support); cursor: pointer; }
+
+        .task-checklist { background: var(--bg-base); padding: 0.8rem; border-radius: var(--radius-md); margin-top: 0.4rem; border: 1px solid var(--border-color); }
+        .checklist-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.85rem; cursor: pointer; color: var(--text-base); }
+        .checklist-item.done span { text-decoration: line-through; color: var(--text-support); }
+        .checklist-item input { width: 18px; height: 18px; accent-color: var(--brand-primary); }
+
+        .task-actions-row { display: flex; gap: 0.2rem; flex-shrink: 0; }
+        .action-icon { background: transparent; border: none; color: var(--text-support); font-size: 1.2rem; padding: 0.4rem; border-radius: var(--radius-sm); cursor: pointer; }
+        .drag-handle { cursor: grab; padding: 0.4rem; color: var(--text-support); font-size: 1.2rem; }
+
+        .task-footer { display: flex; justify-content: space-between; flex-wrap: wrap; padding-top: 0.8rem; border-top: 1px dashed var(--border-color); }
+        .task-meta { display: flex; gap: 0.6rem; font-size: 0.75rem; }
+        .badge { background: var(--bg-base); padding: 0.3rem 0.6rem; border-radius: 6px; border: 1px solid var(--border-color); display: flex; align-items: center; gap: 0.3rem; color: var(--text-support); }
+        .badge.overdue { color: var(--danger); background: rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.3); }
+        .badge.today { color: var(--brand-primary); background: rgba(249, 115, 22, 0.1); border-color: rgba(249, 115, 22, 0.3); }
+
+        .subtask-container { display: flex; align-items: center; gap: 0.6rem; flex: 1; }
+        .progress-track { flex: 1; height: 6px; background: var(--bg-base); border-radius: 999px; overflow: hidden; }
+        .progress-fill { height: 100%; background: var(--brand-gradient); }
+
+        .fab {
+            position: fixed; bottom: 2rem; right: 2rem; width: 60px; height: 60px; border-radius: 50%;
+            background: var(--brand-gradient); color: white; border: none; font-size: 2rem;
+            display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 90;
+            box-shadow: 0 10px 25px var(--brand-glow);
+        }
+
+        dialog { margin: auto; border: none; border-radius: var(--radius-xl); background: var(--bg-surface); max-width: 480px; width: 92%; color: var(--text-base); }
+        dialog::backdrop { background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); }
+        .modal-content { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.2rem; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; font-weight: 800; color: var(--text-title); }
+        .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+        .form-control { background: var(--bg-base); border: 1px solid var(--border-color); color: var(--text-title); padding: 0.8rem 1rem; border-radius: var(--radius-md); }
+        .btn-primary { background: var(--brand-gradient); color: white; border: none; padding: 0.9rem; border-radius: var(--radius-md); font-weight: 700; cursor: pointer; width: 100%; }
+        #toast {
+            position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%) translateY(150%);
+            background: var(--bg-glass); backdrop-filter: blur(16px); color: var(--text-title);
+            padding: 0.8rem 1.2rem; border-radius: 999px; z-index: 10000; transition: transform 0.3s;
+            display: flex; gap: 1rem; align-items: center; border: 1px solid var(--border-color);
+        }
+        #toast.show { transform: translateX(-50%) translateY(0); }
+        .toast-action { background: var(--brand-gradient); border: none; color: white; padding: 0.3rem 0.8rem; border-radius: 999px; cursor: pointer; }
+        .chart-container { margin: 1rem; padding: 1rem; background: var(--bg-surface); border-radius: var(--radius-lg); display: none; }
+        .chart-container.visible { display: block; }
+        canvas { width: 100%; height: 120px; }
+        @media (max-width: 600px) { .fab { width: 54px; height: 54px; font-size: 1.6rem; } }
     </style>
 </head>
 <body>
-<div class="app-wrapper">
-    <div class="hero">
-        <div class="title-section">
-            <h1>⚡ TaskFlow Pro</h1>
-            <p>Produtividade com estilo e alto contraste</p>
-        </div>
-        <div style="display: flex; gap: 0.8rem; align-items: center;">
-            <button id="darkModeToggle" class="dark-toggle" aria-label="Alternar tema">🌙 Modo escuro</button>
-            <div class="progress-card">
-                <div class="progress-label"><span>✅ PROGRESSO</span><span id="progressPercent">0%</span></div>
-                <div class="progress-bar-bg"><div class="progress-fill" id="progressFill"></div></div>
+<header class="app-header">
+    <div class="header-top">
+        <div class="brand"><div class="logo-box"><i class="ph-bold ph-check-square-offset"></i></div><span>TaskFlow Pro</span></div>
+        <div class="search-container"><i class="ph ph-magnifying-glass"></i><input type="text" id="searchInput" placeholder="Pesquisar... (Ctrl+K)"></div>
+        <div class="header-actions">
+            <button class="icon-btn" id="pomodoroBtn"><i class="ph ph-timer"></i></button>
+            <button class="icon-btn" id="viewToggle"><i class="ph ph-grid-four"></i></button>
+            <button class="icon-btn" id="themeToggleQuick"><i class="ph ph-moon"></i></button>
+            <button class="icon-btn" id="menuToggle"><i class="ph ph-dots-three-vertical"></i></button>
+            <div class="dropdown-menu" id="mainMenu">
+                <div class="dropdown-item" id="exportBtn"><i class="ph ph-download-simple"></i> Backup JSON</div>
+                <label class="dropdown-item" for="restoreFileInput"><i class="ph ph-upload-simple"></i> Restaurar Backup</label>
+                <input type="file" id="restoreFileInput" accept=".json" style="display:none">
+                <div class="dropdown-item" id="importListBtn"><i class="ph ph-file-csv"></i> Importar Lista</div>
+                <input type="file" id="importListFileInput" accept=".csv,.json" style="display:none">
+                <div class="dropdown-item" id="downloadModelBtn"><i class="ph ph-info"></i> Modelos para IA</div>
+                <div style="height:1px; background:var(--border-color); margin:4px 0;"></div>
+                <div class="dropdown-item" id="toggleChartBtn"><i class="ph ph-chart-bar"></i> Dashboard</div>
+                <div class="dropdown-item danger" id="clearCompletedBtn"><i class="ph ph-broom"></i> Limpar Concluídas</div>
             </div>
         </div>
     </div>
-
-    <div class="card-gold">
-        <form id="taskForm">
-            <div class="form-row">
-                <div class="field" style="flex:2"><label>📌 TÍTULO *</label><input type="text" id="taskTitle" placeholder="Ex: Reunião com cliente" required></div>
-                <div class="field"><label>📝 DESCRIÇÃO</label><input type="text" id="taskDesc" placeholder="Opcional"></div>
-                <div class="field"><label>⚡ PRIORIDADE</label><select id="taskPriority"><option value="low">Baixa</option><option value="medium" selected>Média</option><option value="high">Alta</option></select></div>
-                <div class="field"><label>📂 CATEGORIA</label><select id="taskCategory"><option value="Trabalho">💼 Trabalho</option><option value="Pessoal">🏠 Pessoal</option><option value="Estudo">📚 Estudo</option><option value="Urgente">⚠️ Urgente</option></select></div>
-                <div class="field"><label>📅 DATA LIMITE</label><input type="date" id="taskDueDate" required></div>
-                <div class="field"><button type="submit" id="submitBtn">➕ Adicionar</button></div>
-            </div>
-        </form>
-        <div style="display: flex; gap: 0.8rem; margin-top: 12px;">
-            <button type="button" id="cancelEditBtn" class="btn-outline" style="display:none;">✖ Cancelar edição</button>
-            <button type="button" id="clearFormBtn" class="btn-outline">🗑 Limpar formulário</button>
+    <div class="sub-header">
+        <div class="mini-stats"><span id="kpi-rate"><i class="ph-fill ph-check-circle"></i> 0%</span><span id="kpi-pending"><i class="ph-fill ph-hourglass-high"></i> 0 pendentes</span><span id="kpi-high"><i class="ph-fill ph-fire"></i> 0 críticas</span></div>
+        <div class="filters-scroll">
+            <button id="clearFiltersBtn" class="filter-pill" style="display:none;"><i class="ph ph-x"></i> Limpar</button>
+            <select id="filterStatus" class="filter-pill"><option value="all">Situação: Todas</option><option value="pending">Pendentes</option><option value="completed">Concluídas</option></select>
+            <select id="filterCategory" class="filter-pill"><option value="all">Categoria: Todas</option><option value="Trabalho">Trabalho</option><option value="Projeto">Projeto</option><option value="Pessoal">Pessoal</option></select>
+            <select id="filterPriority" class="filter-pill"><option value="all">Prioridade: Todas</option><option value="high">Alta</option><option value="medium">Média</option><option value="low">Baixa</option></select>
+            <select id="sortSelect" class="filter-pill"><option value="manual">Ord: Manual</option><option value="date">Ord: Prazo</option><option value="priority">Ord: Prioridade</option></select>
         </div>
     </div>
-
-    <div class="card-gold">
-        <div class="toolbar">
-            <div class="filter-group">
-                <select id="filterStatus"><option value="all">📋 Todas</option><option value="pending">⏳ Pendentes</option><option value="completed">✅ Concluídas</option></select>
-                <select id="filterCategory"><option value="all">📁 Todas categorias</option><option value="Trabalho">Trabalho</option><option value="Pessoal">Pessoal</option><option value="Estudo">Estudo</option><option value="Urgente">Urgente</option></select>
-                <input type="text" id="searchInput" placeholder="🔎 Buscar...">
-            </div>
-            <div class="filter-group">
-                <span>📌 Ordenar:</span>
-                <select id="sortSelect">
-                    <option value="manual">🖱️ Manual</option>
-                    <option value="date-asc">📅 Data (mais cedo)</option>
-                    <option value="date-desc">📅 Data (mais tarde)</option>
-                    <option value="priority">⚡ Prioridade</option>
-                    <option value="category">📂 Categoria</option>
-                </select>
-                <button id="clearFiltersBtn" class="btn-outline">Limpar filtros</button>
-                <button id="clearCompletedBtn" class="btn-outline">🗑 Remover concluídas</button>
-            </div>
-        </div>
-        <div style="display: flex; gap: 0.8rem; justify-content: flex-end; margin-top: 1rem; flex-wrap: wrap;">
-            <button id="exportBtn" class="btn-outline">📎 Exportar JSON</button>
-            <label for="importFileInput" class="btn-outline" style="cursor:pointer; padding:0.6rem 1.2rem;">📂 Importar JSON</label>
-            <input type="file" id="importFileInput" accept=".json" style="display:none">
-        </div>
-    </div>
-
-    <div class="card-gold" style="padding: 0.8rem 1rem;">
-        <div id="tasksList" class="tasks-board"></div>
-    </div>
-    <footer>💡 Dica: Enter salva, ESC cancela edição. Arraste apenas no modo Manual sem filtros.</footer>
-</div>
-<div id="toast"></div>
+    <div class="global-progress"><div class="global-progress-fill" id="globalProgressFill"></div></div>
+    <div class="pomodoro-bar" id="pomodoroBar"></div>
+</header>
+<main class="main-content" id="taskList"></main>
+<div class="chart-container" id="chartContainer"><canvas id="productivityChart"></canvas></div>
+<button class="fab" id="openModalBtn"><i class="ph ph-plus"></i></button>
+<dialog id="taskModal"><div class="modal-content"><div class="modal-header"><span id="modalTitle">Nova Tarefa</span><button class="icon-btn cancel-modal"><i class="ph ph-x"></i></button></div><form id="taskForm"><div class="form-group"><label>Título</label><input type="text" id="taskTitle" class="form-control" required></div><div class="form-group"><label>Descrição</label><textarea id="taskDesc" class="form-control"></textarea></div><div class="grid-2"><div class="form-group"><label>Prioridade</label><select id="taskPriority" class="form-control"><option value="low">Baixa</option><option value="medium" selected>Média</option><option value="high">Alta</option></select></div><div class="form-group"><label>Data Limite</label><input type="date" id="taskDate" class="form-control"></div></div><div class="form-group"><label>Categoria</label><select id="taskCategory" class="form-control"><option value="Trabalho">Trabalho</option><option value="Projeto">Projeto</option><option value="Pessoal">Pessoal</option></select></div><div class="form-group"><label>Checklist</label><button type="button" id="addSubtaskBtn" style="background:var(--bg-base); border:1px solid var(--border-color); padding:0.3rem 0.6rem; border-radius:6px;">+ Item</button><div id="subtaskList"></div></div><button type="submit" class="btn-primary">Guardar</button></form></div></dialog>
+<dialog id="confirmDialog"><div class="modal-content"><div class="modal-header"><span id="confirmTitle">Confirmação</span><button class="icon-btn" id="closeConfirm"><i class="ph ph-x"></i></button></div><p id="confirmMessage"></p><div class="btn-group"><button id="confirmCancel">Cancelar</button><button id="confirmOk" class="btn-primary-confirm">Confirmar</button></div></div></dialog>
+<dialog id="modelDialog"><div class="modal-content"><div class="modal-header"><span>Modelos de Importação</span><button class="icon-btn" id="closeModelDialog"><i class="ph ph-x"></i></button></div><textarea readonly class="form-control" rows="5" id="modelText"></textarea><button id="downloadCsvModel" class="btn-primary" style="margin-top:0.5rem;">Baixar CSV Exemplo</button><button id="downloadJsonModel" class="btn-primary">Baixar JSON Exemplo</button></div></dialog>
+<div id="toast"><span id="toastMsg"></span><button id="toastAction" class="toast-action" style="display:none;">Desfazer</button></div>
 
 <script>
-    // ---------- APP STATE ----------
-    let tasks = [];
-    let editingId = null;
-    let currentSort = localStorage.getItem('taskflow_sort') || 'manual';
-    let currentFilterStatus = 'all';
-    let currentFilterCategory = 'all';
-    let currentSearch = '';
-    let searchDebounceTimer = null;
-
-    // DOM elements
-    const taskForm = document.getElementById('taskForm');
-    const taskTitle = document.getElementById('taskTitle');
-    const taskDesc = document.getElementById('taskDesc');
-    const taskPriority = document.getElementById('taskPriority');
-    const taskCategory = document.getElementById('taskCategory');
-    const taskDueDate = document.getElementById('taskDueDate');
-    const submitBtn = document.getElementById('submitBtn');
-    const cancelEditBtn = document.getElementById('cancelEditBtn');
-    const clearFormBtn = document.getElementById('clearFormBtn');
-    const filterStatus = document.getElementById('filterStatus');
-    const filterCategory = document.getElementById('filterCategory');
-    const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
-    const clearFiltersBtn = document.getElementById('clearFiltersBtn');
-    const clearCompletedBtn = document.getElementById('clearCompletedBtn');
-    const exportBtn = document.getElementById('exportBtn');
-    const importFile = document.getElementById('importFileInput');
-    const tasksListDiv = document.getElementById('tasksList');
-    const progressPercentSpan = document.getElementById('progressPercent');
-    const progressFillDiv = document.getElementById('progressFill');
-    const darkToggle = document.getElementById('darkModeToggle');
-    const toastEl = document.getElementById('toast');
-
-    function showToast(msg, isError = false) {
-        toastEl.textContent = msg;
-        toastEl.style.background = isError ? '#b91c1c' : (document.body.classList.contains('dark') ? '#1e1a12' : '#2c2c2c');
-        toastEl.style.color = isError ? 'white' : (document.body.classList.contains('dark') ? '#fef3c7' : 'white');
-        toastEl.classList.add('show');
-        setTimeout(() => toastEl.classList.remove('show'), 2500);
+// --------------------------------------------------------------
+// IMPLEMENTAÇÃO COMPLETA (TUDO FUNCIONAL) - CORREÇÃO TEMA ESCURO
+// --------------------------------------------------------------
+class TaskApp {
+    constructor() {
+        this.storageKey = 'taskflow_unified';
+        this.tasks = [];
+        this.lastDeleted = null;
+        this.sortable = null;
+        this.gridView = false;
+        this.chartVisible = false;
+        this.pomodoroInterval = null;
+        this.pomodoroRunning = false;
+        this.pomodoroTime = 25 * 60;
+        this.pomodoroRemaining = 25 * 60;
+        this.init();
     }
 
-    function getTodayString() { return new Date().toISOString().slice(0,10); }
-    function getDefaultDueDate() { let d = new Date(); d.setDate(d.getDate()+1); return d.toISOString().slice(0,10); }
+    init() {
+        this.loadData();
+        this.bindEvents();
+        // Garantir tema escuro como padrão, sem classe light-theme inicialmente
+        const savedTheme = localStorage.getItem('theme');
+        const isLight = savedTheme === 'light';
+        this.applyTheme(isLight);
+        this.render();
+        setInterval(() => this.checkDueDates(), 60000);
+        if (localStorage.getItem('chartVisible') === 'true') this.toggleChart(true);
+        this.initSortable();
+        document.getElementById('taskDate').value = new Date().toISOString().slice(0,10);
+    }
 
-    function loadTasks() {
-        const stored = localStorage.getItem('taskflow_pro');
-        if (stored) { try { tasks = JSON.parse(stored); } catch(e){} }
-        if (!tasks || !tasks.length) {
-            tasks = [
-                { id: Date.now()+1, title: 'Revisar proposta', description: 'Alinhar com equipe', priority: 'high', category: 'Trabalho', dueDate: getTodayString(), completed: false },
-                { id: Date.now()+2, title: 'Estudar React', description: 'Hooks avançados', priority: 'medium', category: 'Estudo', dueDate: getDefaultDueDate(), completed: false },
-                { id: Date.now()+3, title: 'Academia', description: 'Treino A', priority: 'low', category: 'Pessoal', dueDate: getDefaultDueDate(), completed: true },
-            ];
+    loadData() {
+        const stored = localStorage.getItem(this.storageKey);
+        if(stored) this.tasks = JSON.parse(stored);
+        else this.tasks = [
+            { id: Date.now()+1, title: "Revisar proposta", description: "Alinhar com equipe", priority: "high", category: "Trabalho", date: new Date().toISOString().slice(0,10), completed: false, subtasks: [] },
+            { id: Date.now()+2, title: "Estudar React", description: "Hooks avançados", priority: "medium", category: "Estudo", date: new Date().toISOString().slice(0,10), completed: false, subtasks: [] },
+            { id: Date.now()+3, title: "Academia", description: "Treino A", priority: "low", category: "Pessoal", date: new Date().toISOString().slice(0,10), completed: true, subtasks: [] }
+        ];
+    }
+
+    save() { localStorage.setItem(this.storageKey, JSON.stringify(this.tasks)); this.updateStats(); }
+
+    updateStats() {
+        const total = this.tasks.length;
+        const completed = this.tasks.filter(t=>t.completed).length;
+        const rate = total ? Math.round(completed/total*100) : 0;
+        const pending = total - completed;
+        const high = this.tasks.filter(t=>!t.completed && t.priority==='high').length;
+        document.getElementById('kpi-rate').innerHTML = `<i class="ph-fill ph-check-circle"></i> ${rate}%`;
+        document.getElementById('kpi-pending').innerHTML = `<i class="ph-fill ph-hourglass-high"></i> ${pending} pendentes`;
+        document.getElementById('kpi-high').innerHTML = `<i class="ph-fill ph-fire"></i> ${high} críticas`;
+        document.getElementById('globalProgressFill').style.width = `${rate}%`;
+        if(this.chartVisible) this.drawChart();
+    }
+
+    getFiltered() {
+        let filtered = [...this.tasks];
+        const status = document.getElementById('filterStatus').value;
+        const cat = document.getElementById('filterCategory').value;
+        const prio = document.getElementById('filterPriority').value;
+        const search = document.getElementById('searchInput').value.trim().toLowerCase();
+        const sort = document.getElementById('sortSelect').value;
+        if(status === 'pending') filtered = filtered.filter(t=>!t.completed);
+        if(status === 'completed') filtered = filtered.filter(t=>t.completed);
+        if(cat !== 'all') filtered = filtered.filter(t=>t.category === cat);
+        if(prio !== 'all') filtered = filtered.filter(t=>t.priority === prio);
+        if(search) {
+            const fuse = new Fuse(filtered, { keys: ['title','description','category'], threshold: 0.4 });
+            filtered = fuse.search(search).map(r=>r.item);
         }
-        saveTasks();
-    }
-    function saveTasks() { localStorage.setItem('taskflow_pro', JSON.stringify(tasks)); updateProgress(); }
-    function updateProgress() {
-        let total = tasks.length, completed = tasks.filter(t=>t.completed).length, p = total===0?0:Math.round(completed/total*100);
-        progressPercentSpan.innerText = `${p}%`;
-        progressFillDiv.style.width = `${p}%`;
-    }
-
-    function addTask(t) { tasks.push(t); saveTasks(); showToast('✅ Tarefa adicionada'); }
-    function updateTask(upd) { let idx = tasks.findIndex(t=>t.id===upd.id); if(idx!==-1) tasks[idx]=upd; saveTasks(); showToast('✏️ Tarefa atualizada'); }
-    function deleteTask(id) { tasks = tasks.filter(t=>t.id!==id); saveTasks(); showToast('🗑️ Tarefa removida'); }
-    function toggleComplete(id) { let t = tasks.find(t=>t.id===id); if(t) { t.completed = !t.completed; saveTasks(); showToast(t.completed ? '✅ Tarefa concluída' : '🔄 Tarefa reaberta'); } }
-    function deleteCompleted() { 
-        let newTasks = tasks.filter(t=>!t.completed);
-        if(newTasks.length === tasks.length) return showToast('Nenhuma tarefa concluída para remover', true);
-        tasks = newTasks; saveTasks(); showToast('🗑️ Tarefas concluídas removidas');
-    }
-    function duplicateTask(id) {
-        let original = tasks.find(t=>t.id===id);
-        if(original) {
-            let newTask = { ...original, id: Date.now(), title: `${original.title} (cópia)`, completed: false };
-            addTask(newTask);
-            renderTasks();
-        }
-    }
-
-    function getFilteredSorted() {
-        let filtered = [...tasks];
-        if (currentFilterStatus === 'pending') filtered = filtered.filter(t=>!t.completed);
-        if (currentFilterStatus === 'completed') filtered = filtered.filter(t=>t.completed);
-        if (currentFilterCategory !== 'all') filtered = filtered.filter(t=>t.category === currentFilterCategory);
-        if (currentSearch.trim()) { let s = currentSearch.trim().toLowerCase(); filtered = filtered.filter(t=>t.title.toLowerCase().includes(s)||(t.description&&t.description.toLowerCase().includes(s))); }
-        if (currentSort === 'date-asc') filtered.sort((a,b)=>(a.dueDate||'').localeCompare(b.dueDate||''));
-        if (currentSort === 'date-desc') filtered.sort((a,b)=>(b.dueDate||'').localeCompare(a.dueDate||''));
-        if (currentSort === 'priority') { let w={high:1,medium:2,low:3}; filtered.sort((a,b)=>w[a.priority]-w[b.priority]); }
-        if (currentSort === 'category') filtered.sort((a,b)=>(a.category||'').localeCompare(b.category||''));
-        if (currentSort === 'manual') filtered.sort((a,b)=>tasks.findIndex(t=>t.id===a.id)-tasks.findIndex(t=>t.id===b.id));
+        if(sort === 'date') filtered.sort((a,b)=>a.date.localeCompare(b.date));
+        if(sort === 'priority') { const w={high:1,medium:2,low:3}; filtered.sort((a,b)=>w[a.priority]-w[b.priority]); }
+        const canDrag = (sort === 'manual' && status === 'all' && cat === 'all' && prio === 'all' && !search);
+        if(this.sortable) this.sortable.option('disabled', !canDrag);
+        document.getElementById('clearFiltersBtn').style.display = (status!=='all'||cat!=='all'||prio!=='all'||search) ? 'flex' : 'none';
         return filtered;
     }
 
-    function renderTasks() {
-        let sorted = getFilteredSorted();
-        let allowDrag = (currentSort === 'manual' && currentFilterStatus==='all' && currentFilterCategory==='all' && !currentSearch.trim());
-        tasksListDiv.innerHTML = '';
-        if (!sorted.length) { tasksListDiv.innerHTML = '<div class="empty-message">✨ Nenhuma tarefa encontrada.</div>'; return; }
-        sorted.forEach(task => {
-            let div = document.createElement('div');
-            div.className = `task-card priority-${task.priority}`;
-            if (task.completed) div.classList.add('completed-task');
-            if (allowDrag) { div.setAttribute('draggable','true'); div.setAttribute('data-id',task.id); }
-            let due = task.dueDate ? task.dueDate.split('-').reverse().join('/') : 'sem data';
-            div.innerHTML = `
-                <div class="drag-handle" style="${allowDrag?'':'opacity:0.4'}">⋮⋮</div>
-                <div class="task-content">
-                    <div class="task-title">
-                        <input type="checkbox" class="task-check" data-id="${task.id}" ${task.completed?'checked':''}>
-                        <span>${escapeHtml(task.title)}</span>
+    render() {
+        const tasks = this.getFiltered();
+        const container = document.getElementById('taskList');
+        container.innerHTML = '';
+        if(tasks.length === 0) { container.innerHTML = '<div style="text-align:center; padding:3rem; color:var(--text-support);">Nenhuma tarefa encontrada</div>'; return; }
+        const today = new Date().toISOString().slice(0,10);
+        tasks.forEach(task => {
+            const card = document.createElement('div');
+            card.className = `task-card ${task.completed ? 'completed' : ''} ${task.date === today && !task.completed ? 'today' : ''}`;
+            card.dataset.id = task.id;
+            const isOverdue = !task.completed && task.date < today;
+            const subtasksHtml = task.subtasks?.length ? `<div class="task-checklist">${task.subtasks.map(sub => `<label class="checklist-item ${sub.done ? 'done' : ''}" data-task="${task.id}" data-sub="${sub.id}"><input type="checkbox" ${sub.done ? 'checked' : ''}> <span>${this.escape(sub.text)}</span></label>`).join('')}</div>` : '';
+            const progressHtml = task.subtasks?.length ? `<div class="subtask-container"><span style="color:var(--text-support);">${task.subtasks.filter(s=>s.done).length}/${task.subtasks.length}</span><div class="progress-track"><div class="progress-fill" style="width:${task.subtasks.filter(s=>s.done).length/task.subtasks.length*100}%"></div></div></div>` : '';
+            card.innerHTML = `
+                <div class="task-header">
+                    <input type="checkbox" class="custom-cb toggle-complete" data-id="${task.id}" ${task.completed ? 'checked' : ''}>
+                    <div class="task-content">
+                        <div class="task-title-row" data-id="${task.id}">
+                            <div class="priority-dot ${task.priority}"></div>
+                            <div class="task-title">${this.escape(task.title)}</div>
+                        </div>
+                        ${task.description ? `<div class="task-desc" data-id="${task.id}">${this.escape(task.description)}</div>` : ''}
+                        ${subtasksHtml}
                     </div>
-                    ${task.description ? `<div class="task-desc">${escapeHtml(task.description)}</div>` : ''}
-                    <div class="meta-badges">
-                        <span class="badge">⚡ ${task.priority==='high'?'Alta':task.priority==='medium'?'Média':'Baixa'}</span>
-                        <span class="badge">📁 ${task.category}</span>
-                        <span class="badge">📅 ${due}</span>
+                    <div class="task-actions-row">
+                        <button class="action-icon options-btn" data-id="${task.id}"><i class="ph-bold ph-dots-three"></i></button>
+                        <div class="drag-handle"><i class="ph ph-list"></i></div>
                     </div>
                 </div>
-                <div class="task-actions">
-                    <button class="duplicate-task" data-id="${task.id}" title="Duplicar">📋</button>
-                    <button class="edit-task" data-id="${task.id}">✏️</button>
-                    <button class="delete-task" data-id="${task.id}">🗑️</button>
-                </div>
-            `;
-            tasksListDiv.appendChild(div);
+                <div class="task-footer">
+                    ${progressHtml || '<div></div>'}
+                    <div class="task-meta">
+                        <span class="badge"><i class="ph ph-tag"></i> ${task.category}</span>
+                        <span class="badge ${isOverdue ? 'overdue' : ''} ${task.date === today ? 'today' : ''}"><i class="ph ph-calendar-blank"></i> ${task.date.split('-').reverse().join('/')}</span>
+                    </div>
+                </div>`;
+            container.appendChild(card);
         });
-        attachEvents();
-        if (allowDrag) attachDragEvents();
+        this.attachCardEvents();
+        this.updateStats();
     }
 
-    function escapeHtml(str) { if(!str) return ''; return str.replace(/[&<>]/g, m=> m==='&'?'&amp;': m==='<'?'&lt;':'&gt;'); }
-
-    function attachEvents() {
-        document.querySelectorAll('.task-check').forEach(cb => cb.onchange = e => toggleComplete(parseInt(e.target.dataset.id)));
-        document.querySelectorAll('.edit-task').forEach(btn => btn.onclick = e => startEdit(parseInt(btn.dataset.id)));
-        document.querySelectorAll('.delete-task').forEach(btn => btn.onclick = e => { if(confirm('Excluir tarefa?')) deleteTask(parseInt(btn.dataset.id)); renderTasks(); });
-        document.querySelectorAll('.duplicate-task').forEach(btn => btn.onclick = e => { duplicateTask(parseInt(btn.dataset.id)); renderTasks(); });
+    attachCardEvents() {
+        document.querySelectorAll('.toggle-complete').forEach(cb => cb.onchange = e => this.toggleComplete(parseInt(cb.dataset.id)));
+        document.querySelectorAll('.task-title-row, .task-desc').forEach(el => el.onclick = e => this.openEditModal(parseInt(el.dataset.id)));
+        document.querySelectorAll('.options-btn').forEach(btn => btn.onclick = e => { e.stopPropagation(); this.showOptions(parseInt(btn.dataset.id)); });
+        document.querySelectorAll('.checklist-item input').forEach(ch => ch.onchange = e => { const parent = ch.closest('.checklist-item'); if(parent) this.toggleSubtask(parseInt(parent.dataset.task), parent.dataset.sub, ch.checked); });
     }
 
-    let dragSrc=null;
-    function attachDragEvents() {
-        let cards = document.querySelectorAll('.task-card[draggable="true"]');
-        cards.forEach(card => {
-            card.ondragstart = e => { dragSrc = parseInt(card.dataset.id); e.dataTransfer.setData('text/plain',dragSrc); card.classList.add('dragging'); };
-            card.ondragover = e => e.preventDefault();
-            card.ondrop = e => { e.preventDefault(); let targetId = parseInt(card.dataset.id); if(dragSrc && targetId && dragSrc!==targetId){ let srcIdx=tasks.findIndex(t=>t.id===dragSrc), tgtIdx=tasks.findIndex(t=>t.id===targetId); if(srcIdx!==-1 && tgtIdx!==-1){ let [moved]=tasks.splice(srcIdx,1); tasks.splice(tgtIdx,0,moved); saveTasks(); renderTasks(); } } dragSrc=null; };
-            card.ondragend = e => { card.classList.remove('dragging'); dragSrc=null; };
-        });
+    toggleComplete(id) { const t = this.tasks.find(t=>t.id===id); if(t){ t.completed = !t.completed; if(t.completed && t.subtasks) t.subtasks.forEach(s=>s.done=true); this.save(); this.render(); } }
+    toggleSubtask(taskId, subId, checked) { const t = this.tasks.find(t=>t.id===taskId); if(t && t.subtasks){ const sub = t.subtasks.find(s=>String(s.id)===String(subId)); if(sub){ sub.done = checked; const allDone = t.subtasks.every(s=>s.done); t.completed = allDone; this.save(); this.render(); } } }
+
+    openEditModal(id) { this.editingId = id; const t = this.tasks.find(t=>t.id===id); if(!t) return; document.getElementById('modalTitle').innerText = 'Editar Tarefa'; document.getElementById('taskTitle').value = t.title; document.getElementById('taskDesc').value = t.description || ''; document.getElementById('taskPriority').value = t.priority; document.getElementById('taskCategory').value = t.category; document.getElementById('taskDate').value = t.date; this.renderSubtasks(t.subtasks || []); document.getElementById('taskModal').showModal(); }
+
+    renderSubtasks(subtasks) { const container = document.getElementById('subtaskList'); container.innerHTML = ''; subtasks.forEach(sub => { const div = document.createElement('div'); div.className = 'subtask-item'; div.innerHTML = `<input type="text" class="form-control sub-input" data-id="${sub.id}" value="${this.escape(sub.text)}" placeholder="Item"> <button type="button" class="action-icon del-sub"><i class="ph ph-trash"></i></button>`; container.appendChild(div); }); }
+
+    addSubtaskRow() { const container = document.getElementById('subtaskList'); const div = document.createElement('div'); div.className = 'subtask-item'; div.innerHTML = `<input type="text" class="form-control sub-input" data-id="sub_${Date.now()}" placeholder="Novo item"> <button type="button" class="action-icon del-sub"><i class="ph ph-trash"></i></button>`; container.appendChild(div); }
+
+    saveTaskFromModal() { const title = document.getElementById('taskTitle').value.trim(); if(!title) return this.showToast('Título obrigatório'); const subs = Array.from(document.querySelectorAll('.sub-input')).map(inp => ({ id: inp.dataset.id, text: inp.value.trim(), done: false })); const data = { title, description: document.getElementById('taskDesc').value, priority: document.getElementById('taskPriority').value, category: document.getElementById('taskCategory').value, date: document.getElementById('taskDate').value, subtasks: subs }; if(this.editingId){ const idx = this.tasks.findIndex(t=>t.id===this.editingId); if(idx>-1) this.tasks[idx] = { ...this.tasks[idx], ...data }; } else { this.tasks.unshift({ id: Date.now(), completed: false, ...data }); } this.save(); this.render(); this.closeModal(); }
+
+    closeModal() { document.getElementById('taskModal').close(); this.editingId = null; document.getElementById('taskForm').reset(); document.getElementById('subtaskList').innerHTML = ''; }
+
+    showOptions(id) { this.activeId = id; const sheet = document.createElement('dialog'); sheet.className = 'bottom-sheet'; sheet.innerHTML = `<div class="modal-content"><div class="sheet-grip"></div><div class="modal-header">Opções</div><button id="optEdit">Editar</button><button id="optDup">Duplicar</button><button id="optDel" class="danger">Excluir</button><button class="cancel-modal">Fechar</button></div>`; document.body.appendChild(sheet); sheet.showModal(); sheet.querySelector('#optEdit').onclick = () => { this.openEditModal(id); sheet.close(); }; sheet.querySelector('#optDup').onclick = () => { const t = this.tasks.find(t=>t.id===id); if(t) this.tasks.unshift({ ...t, id: Date.now(), title: t.title + ' (cópia)', completed: false }); this.save(); this.render(); sheet.close(); }; sheet.querySelector('#optDel').onclick = async () => { if(await this.confirm('Excluir tarefa?')){ this.lastDeleted = this.tasks.find(t=>t.id===id); this.tasks = this.tasks.filter(t=>t.id!==id); this.save(); this.render(); this.showToast('Tarefa removida', true); } sheet.close(); }; sheet.querySelector('.cancel-modal').onclick = () => sheet.close(); }
+
+    confirm(msg) { return new Promise(resolve => { const dlg = document.getElementById('confirmDialog'); document.getElementById('confirmMessage').innerText = msg; dlg.showModal(); const ok = () => { resolve(true); dlg.close(); cleanup(); }; const cancel = () => { resolve(false); dlg.close(); cleanup(); }; const cleanup = () => { document.getElementById('confirmOk').removeEventListener('click', ok); document.getElementById('confirmCancel').removeEventListener('click', cancel); document.getElementById('closeConfirm').removeEventListener('click', cancel); }; document.getElementById('confirmOk').addEventListener('click', ok); document.getElementById('confirmCancel').addEventListener('click', cancel); document.getElementById('closeConfirm').addEventListener('click', cancel); }); }
+
+    undoDelete() { if(this.lastDeleted){ this.tasks.unshift(this.lastDeleted); this.lastDeleted = null; this.save(); this.render(); this.showToast('Restaurado'); } }
+
+    deleteCompleted() { const hasCompleted = this.tasks.some(t=>t.completed); if(!hasCompleted) return; this.tasks = this.tasks.filter(t=>!t.completed); this.save(); this.render(); this.showToast('Concluídas removidas'); }
+
+    exportData() { const dataStr = JSON.stringify(this.tasks, null, 2); const blob = new Blob([dataStr], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `taskflow_backup_${new Date().toISOString().slice(0,19)}.json`; a.click(); URL.revokeObjectURL(a.href); this.showToast('Backup exportado'); }
+
+    importData(file) { const reader = new FileReader(); reader.onload = e => { try{ const imported = JSON.parse(e.target.result); if(Array.isArray(imported)){ this.tasks = imported; this.save(); this.render(); this.showToast('Importado com sucesso'); } else throw new Error(); } catch(err){ this.showToast('Arquivo inválido', false, true); } }; reader.readAsText(file); }
+
+    parseCSV(csv) { const lines = csv.split('\n').slice(1); return lines.filter(l=>l.trim()).map(l => { const [title, desc, priority, category, date, subtasks] = l.split(',').map(s=>s.replace(/^"|"$/g, '')); return { title, description: desc || '', priority: priority || 'medium', category: category || 'Pessoal', date: date || new Date().toISOString().slice(0,10), subtasks: subtasks ? subtasks.split(';').map(t=>({ id:'sub_'+Date.now()+Math.random(), text:t, done:false })) : [] }; }); }
+
+    importList(file) { const reader = new FileReader(); reader.onload = e => { const content = e.target.result; if(file.name.endsWith('.json')){ const imported = JSON.parse(content); if(Array.isArray(imported)) this.tasks.unshift(...imported.map(t=>({ ...t, id: Date.now()+Math.random(), completed: false }))); } else if(file.name.endsWith('.csv')){ const imported = this.parseCSV(content); this.tasks.unshift(...imported.map(t=>({ ...t, id: Date.now()+Math.random(), completed: false }))); } this.save(); this.render(); this.showToast('Lista importada'); }; reader.readAsText(file); }
+
+    downloadModel(type) { let content = ''; if(type==='csv') content = 'title,description,priority,category,date,subtasks\n"Exemplo","Descrição","high","Trabalho","2026-06-01","Subtarefa1;Subtarefa2"'; else content = JSON.stringify([{title:"Exemplo",description:"Desc",priority:"high",category:"Trabalho",date:"2026-06-01",subtasks:["Subtarefa1"]}],null,2); const blob = new Blob([content], {type: type==='csv'?'text/csv':'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `modelo.${type}`; a.click(); }
+
+    toggleChart(force) { this.chartVisible = force !== undefined ? force : !this.chartVisible; document.getElementById('chartContainer').classList.toggle('visible', this.chartVisible); localStorage.setItem('chartVisible', this.chartVisible); if(this.chartVisible) this.drawChart(); }
+
+    drawChart() { const canvas = document.getElementById('productivityChart'); const ctx = canvas.getContext('2d'); const days = ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb']; const weekCounts = new Array(7).fill(0); const today = new Date(); this.tasks.filter(t=>t.completed && t.completedDate).forEach(t=>{ const d = new Date(t.completedDate); if((today-d)/(1000*3600*24)<=7) weekCounts[d.getDay()]++; }); const max = Math.max(...weekCounts,1); canvas.width = canvas.offsetWidth*2; canvas.height = canvas.offsetHeight*2; ctx.clearRect(0,0,canvas.width,canvas.height); const barW = canvas.width/14; days.forEach((d,i)=>{ const h = (weekCounts[i]/max)*(canvas.height-20); ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--brand-primary'); ctx.fillRect(i*(barW+5), canvas.height-h-10, barW, h); ctx.fillStyle = getComputedStyle(document.body).getPropertyValue('--text-support'); ctx.fillText(d, i*(barW+5), canvas.height-5); }); }
+
+    toggleTheme() { const isLight = document.body.classList.toggle('light-theme'); localStorage.setItem('theme', isLight ? 'light' : 'dark'); this.applyTheme(isLight); }
+
+    applyTheme(isLight) { 
+        if(isLight) document.body.classList.add('light-theme');
+        else document.body.classList.remove('light-theme');
+        document.getElementById('themeToggleQuick').innerHTML = `<i class="ph ph-${isLight ? 'sun' : 'moon'}"></i>`;
     }
 
-    function resetForm() {
-        taskTitle.value = ''; taskDesc.value = ''; taskPriority.value='medium'; taskCategory.value='Trabalho'; taskDueDate.value=getDefaultDueDate();
-        editingId=null; submitBtn.innerText='➕ Adicionar'; cancelEditBtn.style.display='none';
+    initSortable() { this.sortable = new Sortable(document.getElementById('taskList'), { animation: 250, handle: '.drag-handle', ghostClass: 'sortable-ghost', onEnd: (evt) => { const moved = this.tasks.splice(evt.oldIndex, 1)[0]; this.tasks.splice(evt.newIndex, 0, moved); this.save(); this.render(); } }); }
+
+    startPomodoro() { if(this.pomodoroRunning){ clearInterval(this.pomodoroInterval); this.pomodoroRunning=false; document.getElementById('pomodoroBtn').classList.remove('pomodoro-active'); document.getElementById('pomodoroBar').style.width='0%'; return; } this.pomodoroRemaining = 25*60; this.pomodoroRunning=true; document.getElementById('pomodoroBtn').classList.add('pomodoro-active'); this.pomodoroInterval = setInterval(()=>{ if(this.pomodoroRemaining<=0){ clearInterval(this.pomodoroInterval); this.pomodoroRunning=false; this.showToast('Pomodoro concluído!'); document.getElementById('pomodoroBtn').classList.remove('pomodoro-active'); } else { this.pomodoroRemaining--; const pct = ((25*60 - this.pomodoroRemaining)/(25*60))*100; document.getElementById('pomodoroBar').style.width = `${pct}%`; } },1000); }
+
+    checkDueDates() { const today = new Date().toISOString().slice(0,10); const overdue = this.tasks.filter(t=>!t.completed && t.date < today).length; if(overdue) this.showToast(`${overdue} tarefa(s) atrasada(s)`); }
+
+    showToast(msg, undo=false, isError=false) { const toast = document.getElementById('toast'); document.getElementById('toastMsg').innerHTML = msg; const btn = document.getElementById('toastAction'); btn.style.display = undo ? 'block' : 'none'; btn.onclick = () => { this.undoDelete(); toast.classList.remove('show'); }; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'), 3000); }
+
+    escape(str) { if(!str) return ''; return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
+
+    bindEvents() {
+        document.getElementById('taskForm').onsubmit = e => { e.preventDefault(); this.saveTaskFromModal(); };
+        document.getElementById('addSubtaskBtn').onclick = () => this.addSubtaskRow();
+        document.querySelectorAll('.cancel-modal').forEach(btn => btn.onclick = () => this.closeModal());
+        document.getElementById('openModalBtn').onclick = () => { this.editingId = null; document.getElementById('modalTitle').innerText = 'Nova Tarefa'; document.getElementById('taskForm').reset(); document.getElementById('taskDate').value = new Date().toISOString().slice(0,10); document.getElementById('subtaskList').innerHTML = ''; document.getElementById('taskModal').showModal(); };
+        document.getElementById('exportBtn').onclick = () => this.exportData();
+        document.getElementById('restoreFileInput').onchange = e => { if(e.target.files[0]) this.importData(e.target.files[0]); e.target.value=''; };
+        document.getElementById('importListBtn').onclick = () => document.getElementById('importListFileInput').click();
+        document.getElementById('importListFileInput').onchange = e => { if(e.target.files[0]) this.importList(e.target.files[0]); e.target.value=''; };
+        document.getElementById('clearCompletedBtn').onclick = () => this.deleteCompleted();
+        document.getElementById('downloadModelBtn').onclick = () => document.getElementById('modelDialog').showModal();
+        document.getElementById('closeModelDialog').onclick = () => document.getElementById('modelDialog').close();
+        document.getElementById('downloadCsvModel').onclick = () => this.downloadModel('csv');
+        document.getElementById('downloadJsonModel').onclick = () => this.downloadModel('json');
+        document.getElementById('toggleChartBtn').onclick = () => this.toggleChart();
+        document.getElementById('viewToggle').onclick = () => { this.gridView = !this.gridView; document.getElementById('taskList').classList.toggle('grid-view', this.gridView); };
+        document.getElementById('themeToggleQuick').onclick = () => this.toggleTheme();
+        document.getElementById('pomodoroBtn').onclick = () => this.startPomodoro();
+        document.getElementById('menuToggle').onclick = e => { e.stopPropagation(); document.getElementById('mainMenu').classList.toggle('active'); };
+        document.addEventListener('click', (e) => { if(!e.target.closest('#mainMenu') && !e.target.closest('#menuToggle')) document.getElementById('mainMenu').classList.remove('active'); });
+        document.getElementById('filterStatus').onchange = () => this.render();
+        document.getElementById('filterCategory').onchange = () => this.render();
+        document.getElementById('filterPriority').onchange = () => this.render();
+        document.getElementById('sortSelect').onchange = () => this.render();
+        document.getElementById('searchInput').oninput = () => this.render();
+        document.getElementById('clearFiltersBtn').onclick = () => { document.getElementById('filterStatus').value='all'; document.getElementById('filterCategory').value='all'; document.getElementById('filterPriority').value='all'; document.getElementById('searchInput').value=''; document.getElementById('sortSelect').value='manual'; this.render(); };
+        document.addEventListener('keydown', e => { if((e.ctrlKey||e.metaKey) && e.key==='k'){ e.preventDefault(); document.getElementById('searchInput').focus(); } if(e.key==='n' && document.activeElement.tagName!=='INPUT' && document.activeElement.tagName!=='TEXTAREA') document.getElementById('openModalBtn').click(); });
     }
-    function startEdit(id) {
-        let t = tasks.find(t=>t.id===id);
-        if(t){ editingId=id; taskTitle.value=t.title; taskDesc.value=t.description||''; taskPriority.value=t.priority; taskCategory.value=t.category; taskDueDate.value=t.dueDate||getDefaultDueDate(); submitBtn.innerText='✏️ Atualizar'; cancelEditBtn.style.display='inline-block'; }
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        let title = taskTitle.value.trim();
-        if(!title) return showToast('Título obrigatório', true);
-        let due = taskDueDate.value;
-        if(due && due < getTodayString()) return showToast('Data limite não pode ser anterior a hoje', true);
-        let newTask = { title, description: taskDesc.value.trim(), priority: taskPriority.value, category: taskCategory.value, dueDate: due||getDefaultDueDate() };
-        if(editingId){
-            let old = tasks.find(t=>t.id===editingId);
-            if(old) updateTask({...old, ...newTask});
-            resetForm();
-        } else {
-            addTask({ id: Date.now(), completed: false, ...newTask });
-            resetForm();
-        }
-        renderTasks();
-    }
-
-    function refreshFilters() {
-        if(editingId) resetForm();
-        currentFilterStatus = filterStatus.value;
-        currentFilterCategory = filterCategory.value;
-        currentSearch = searchInput.value;
-        currentSort = sortSelect.value;
-        localStorage.setItem('taskflow_sort', currentSort);
-        renderTasks();
-    }
-
-    function clearFilters() { filterStatus.value='all'; filterCategory.value='all'; searchInput.value=''; sortSelect.value=currentSort; refreshFilters(); }
-    function clearForm() { resetForm(); renderTasks(); showToast('Formulário limpo'); }
-
-    // Dark mode melhorado
-    function initDarkMode() { 
-        let dark = localStorage.getItem('taskflow_dark') === 'true'; 
-        if(dark) document.body.classList.add('dark'); 
-        darkToggle.innerText = dark ? '☀️ Claro' : '🌙 Escuro'; 
-        darkToggle.onclick = () => { 
-            document.body.classList.toggle('dark'); 
-            let isDark = document.body.classList.contains('dark'); 
-            localStorage.setItem('taskflow_dark', isDark); 
-            darkToggle.innerText = isDark ? '☀️ Claro' : '🌙 Escuro';
-            showToast(isDark ? 'Modo escuro ativado' : 'Modo claro ativado');
-        }; 
-    }
-
-    function exportData() { let blob = new Blob([JSON.stringify(tasks,null,2)], {type:'application/json'}); let a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=`taskflow_${new Date().toISOString().slice(0,19)}.json`; a.click(); URL.revokeObjectURL(a.href); showToast('Backup exportado'); }
-    function importData(file) { let reader=new FileReader(); reader.onload=e=>{ try{ let imported=JSON.parse(e.target.result); if(Array.isArray(imported)){ tasks=imported; saveTasks(); resetForm(); renderTasks(); showToast('Importação concluída'); } else throw new Error(); } catch(err){ showToast('Arquivo inválido',true); } }; reader.readAsText(file); }
-
-    document.addEventListener('keydown', e => { if(e.key === 'Escape' && editingId) { resetForm(); renderTasks(); showToast('Edição cancelada'); } });
-    taskTitle.addEventListener('keydown', e => { if(e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); handleSubmit(e); } });
-
-    searchInput.addEventListener('input', () => { if(searchDebounceTimer) clearTimeout(searchDebounceTimer); searchDebounceTimer = setTimeout(refreshFilters, 300); });
-    filterStatus.onchange = refreshFilters; filterCategory.onchange = refreshFilters; sortSelect.onchange = refreshFilters;
-    clearFiltersBtn.onclick = clearFilters; clearCompletedBtn.onclick = () => { if(confirm('Remover todas as tarefas concluídas?')) deleteCompleted(); renderTasks(); };
-    clearFormBtn.onclick = clearForm; cancelEditBtn.onclick = () => { resetForm(); renderTasks(); };
-    taskForm.onsubmit = handleSubmit; exportBtn.onclick = exportData; importFile.onchange = e => { if(e.target.files[0]) importData(e.target.files[0]); e.target.value=''; };
-
-    loadTasks(); resetForm(); refreshFilters(); initDarkMode();
+}
+new TaskApp();
 </script>
 </body>
 </html>
